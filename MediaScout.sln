@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScoutGUI", "MediaScout\MediaScoutGUI.csproj", "{1908AB02-C107-4973-B793-1B446B925956}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScout", "MediaScoutLibrary\MediaScout.csproj", "{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}"
@@ -28,17 +30,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs07.codeplex.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = MediaScout\\MediaScoutGUI.csproj
-		SccProjectName1 = MediaScout
-		SccLocalPath1 = MediaScout
-		SccProjectUniqueName2 = MediaScoutLibrary\\MediaScout.csproj
-		SccProjectName2 = MediaScoutLibrary
-		SccLocalPath2 = MediaScoutLibrary
 	EndGlobalSection
 EndGlobal
