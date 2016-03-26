@@ -1,5 +1,0 @@
-E:\Documents\Visual Studio 2008\Projects\TVScout\Branches\FreQi\MediaScoutLibrary\bin\Debug\MediaScout.dll
-E:\Documents\Visual Studio 2008\Projects\TVScout\Branches\FreQi\MediaScoutLibrary\bin\Debug\MediaScout.pdb
-E:\Documents\Visual Studio 2008\Projects\TVScout\Branches\FreQi\MediaScoutLibrary\obj\Debug\ResolveAssemblyReference.cache
-E:\Documents\Visual Studio 2008\Projects\TVScout\Branches\FreQi\MediaScoutLibrary\obj\Debug\MediaScout.dll
-E:\Documents\Visual Studio 2008\Projects\TVScout\Branches\FreQi\MediaScoutLibrary\obj\Debug\MediaScout.pdb
