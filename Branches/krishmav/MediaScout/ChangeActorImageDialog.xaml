@@ -1,0 +1,63 @@
+﻿<Window x:Class="MediaScoutGUI.ChangeActorImageDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Select Image"	Width="835" Height="586"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Icon="/MediaScoutGUI;component/Resources/tvscouticon.png"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed"
+        WindowStartupLocation="CenterOwner" IsEnabled="True" Background="Gray">
+
+    <Window.Resources>
+        <ContextMenu x:Key="cmLocalPostersMain">
+            <MenuItem Header="Add" Click="btnAddPoster_Click" />
+            <MenuItem Header="Delete All" Click="btnDeleteAllPoster_Click" />
+        </ContextMenu>
+        <ContextMenu x:Key="cmLocalPosters">
+            <MenuItem Header="Delete" Click="btnDeletePoster_Click" />
+        </ContextMenu>
+        <Style TargetType="{x:Type ListBox}">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"  VerticalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+        </Style>
+
+        <DataTemplate x:Key="dtPosters">
+            <StackPanel Height="220" Width="140" Margin="10" ContextMenu="{StaticResource cmLocalPosters}">
+                <Image Source="{Binding Path=Thumb}" Margin="10" Height="150" Width="105" Stretch="Uniform" VerticalAlignment="Top"/>
+                <TextBlock Text="{Binding Path=Resolution}" Foreground="White" Margin="10,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock  Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Hyperlink RequestNavigate="HandleLinkClick" NavigateUri="{Binding Path=Poster}">  
+                        <TextBlock Text="{Binding Path=PosterFileName}" TextTrimming="CharacterEllipsis"/>  
+                    </Hyperlink>
+                </TextBlock>
+            </StackPanel>            
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="246*" />
+            <RowDefinition Height="248*" />
+            <RowDefinition Height="54*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="286*" />
+            <ColumnDefinition Width="259.5*" />
+            <ColumnDefinition Width="267.5*" />
+        </Grid.ColumnDefinitions>
+        <ListBox Margin="8,0" IsSynchronizedWithCurrentItem="True" x:Name="lbPosters" Grid.ColumnSpan="3" ItemTemplate="{StaticResource dtPosters}" Background="Transparent" SelectionChanged="lbPosters_SelectionChanged" BorderThickness="0" />
+        <Button Margin="8,18.878,4,8" Content="Select Image" d:LayoutOverrides="Width, Height" x:Name="btnSelectPoster" Click="btnSelectPoster_Click" Grid.Row="2" IsEnabled="False" />
+        <Button Margin="4,17.838,8,8" Name="btnCancel" Click="btnCancel_Click" Grid.Column="2" Grid.Row="2">Cancel</Button>
+        <Button Margin="4,18.838,4,8" Name="btnDownloadAll" Grid.Column="1" Click="btnDownloadAll_Click" Grid.Row="2" IsEnabled="False">Download All</Button>
+        <Label FontSize="30" FontWeight="Bold" Foreground="WhiteSmoke" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" Margin="123,80,123,75.917" Name="lblNoPosters" VerticalContentAlignment="Center" Visibility="Visible">Loading...</Label>
+        <ListBox ContextMenu="{StaticResource cmLocalPostersMain}" Grid.ColumnSpan="3" IsSynchronizedWithCurrentItem="True" ItemTemplate="{StaticResource dtPosters}" Margin="8,0" Name="lblocalPosters" Background="Transparent" SelectionChanged="lblocalPosters_SelectionChanged" BorderThickness="0" Grid.Row="1" Height="248" VerticalAlignment="Bottom" />
+        <Label FontSize="30" FontWeight="Bold" Foreground="WhiteSmoke" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" Margin="133,94.083,133,84.162" Name="lbNoLocals" VerticalContentAlignment="Center" Visibility="Visible" Grid.Row="1" Content="Add Local Images"></Label>
+    </Grid>
+</Window>

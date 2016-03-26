@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScoutGUI", "MediaScout\MediaScoutGUI.csproj", "{1908AB02-C107-4973-B793-1B446B925956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScout", "MediaScoutLibrary\MediaScout.csproj", "{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitButton", "SplitButton\SplitButton.csproj", "{A75FA431-B3D7-4AC6-8033-CDE76FA98C97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1908AB02-C107-4973-B793-1B446B925956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1908AB02-C107-4973-B793-1B446B925956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1908AB02-C107-4973-B793-1B446B925956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1908AB02-C107-4973-B793-1B446B925956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4F9E059-3AB2-4ECD-9818-E64A1DBB56C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75FA431-B3D7-4AC6-8033-CDE76FA98C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75FA431-B3D7-4AC6-8033-CDE76FA98C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75FA431-B3D7-4AC6-8033-CDE76FA98C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75FA431-B3D7-4AC6-8033-CDE76FA98C97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs07.codeplex.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = MediaScout\\MediaScoutGUI.csproj
+		SccProjectName1 = MediaScout
+		SccLocalPath1 = MediaScout
+		SccProjectUniqueName2 = MediaScoutLibrary\\MediaScout.csproj
+		SccProjectName2 = MediaScoutLibrary
+		SccLocalPath2 = MediaScoutLibrary
+	EndGlobalSection
+EndGlobal

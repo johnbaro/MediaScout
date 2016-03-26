@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="MediaScoutGUI.Views.BulkTVView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <Button HorizontalAlignment="Right" x:Name="btnBrowse" Width="74.829" Content="Browse" RenderTransformOrigin="0.508,0.521" Margin="0,31.52,8,0" Height="23" VerticalAlignment="Top" Click="btnBrowse_Click" />
+            <TextBox Height="23" Margin="8,31.52,86.829,0" x:Name="txtBaseDir" VerticalAlignment="Top" />
+            <Label x:Name="label1" Height="23.52" VerticalAlignment="Top" Content="Choose Start Directory" FontSize="14" FontWeight="Normal" Padding="0,0,0,0" Margin="8,8,0,0" HorizontalAlignment="Left" Width="142.171"/>
+            <Button x:Name="btnFetch"  Content="Fetch Data" HorizontalAlignment="Right" Width="74.829" IsEnabled="False" Margin="0,58.52,8,0" RenderTransformOrigin="-0.809,3.451" Height="23" VerticalAlignment="Top" Click="btnFetch_Click" />
+            <CheckBox Height="16" x:Name="chkRoot" VerticalAlignment="Top" Content="Enable Root/Batch Processing" Margin="8,58.52,0,0" Width="187.667" HorizontalAlignment="Left" />
+            <TextBlock TextWrapping="Wrap" FontSize="10" Foreground="#FF474747" Text="Tick if the selected folder is the root folder (ie 'C:\TV') not a single series (ie 'C:\TV\Red Dwarf')" Margin="8,78.52,0,0" VerticalAlignment="Top" Height="36.123" Width="416.171" HorizontalAlignment="Left" />
+            <RichTextBox x:Name="rtbLog" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="8,114.643,8,8" HorizontalAlignment="Stretch"/>
+            <ComboBox Height="23" HorizontalAlignment="Left" Margin="122,98,0,0" Name="cbSource" VerticalAlignment="Top" Width="120" />
+        </Grid>
+    </Grid>
+</UserControl>

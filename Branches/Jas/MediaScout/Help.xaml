@@ -1,0 +1,19 @@
+﻿<Window x:Class="MediaScoutGUI.Help"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Help" Height="386" Width="452">
+    <Grid>
+        <Label VerticalAlignment="Top" Height="47.773" Content="mediascout" FontSize="28" HorizontalAlignment="Right" Margin="0,12,12,0" Width="152.919" Background="{x:Null}" >
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.705,0.58" StartPoint="0.38,0.583">
+                    <GradientStop Color="#FF000000" Offset="0.491"/>
+                    <GradientStop Color="#FF1BAA04" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
+        <Label Height="28" Margin="0,54,12,0" Name="lblVersion" VerticalAlignment="Top" HorizontalAlignment="Right" Width="120">version unknown</Label>
+        <Button Height="49" Margin="0,0,12,23" Name="btnClose" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="95" FontSize="14" Click="btnClose_Click">Close</Button>
+        <Label Height="28" Margin="12,0,212,49" Name="lblCredits1" VerticalAlignment="Bottom">Media Scout maintained by Soultaker</Label>
+        <Label Margin="12,297,0,23" Name="lblCredits2" HorizontalAlignment="Left" Width="194">Media Scout created by Aeoth</Label>
+    </Grid>
+</Window>

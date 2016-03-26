@@ -1,0 +1,31 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="MediaScoutGUI.MovieResults"
+	x:Name="Window"
+	Title="Movie Search Results"
+	Width="478" Height="477" Background="{DynamicResource WindowBackground}" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" Icon="/MediaScoutGUI;component/Resources/tvscouticon.png" WindowStartupLocation="CenterOwner">
+
+	<Window.Resources>
+		<DataTemplate x:Key="movieTemplate">
+			<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="1">
+				    <TextBlock Text="{Binding Path=Title}" FontSize="14" FontWeight="Bold" />
+                    <TextBlock Text="{Binding Path=Description}" TextWrapping="Wrap" />
+                </StackPanel>
+                <Image Width="92" Height="143" Stretch="Uniform" Grid.Column="0" Source="{Binding Path=Thumbnail}"/>                
+            </Grid>
+		</DataTemplate>
+	</Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<ListBox x:Name="lstMovies" Margin="8,40.5,8,34" ItemTemplate="{DynamicResource movieTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+		<Label HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Width="236" Height="28.5" Content="Movie Search Results" FontSize="16" FontWeight="Bold"/>
+		<Button VerticalAlignment="Bottom" Content="Cancel" Margin="0,0,8,8" Height="22" Width="79" Name="btnCancel" Click="btnCancel_Click" d:LayoutOverrides="Width" HorizontalAlignment="Right" />
+		<Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Select" Margin="8,0,0,6" Width="79" Height="22" Name="btnSelect" Click="btnSelect_Click" />
+	</Grid>
+</Window>

@@ -1,0 +1,25 @@
+- Save/Load the "Space Char" and "Num Padding" to user options/settings
+
+- Use the "RenameFormat" setting in Drop TV, regardless of the "Rename files" checkbox.
+
+- Pick a new name for "Suffix".  Suffix is inappropriate because you can put it anypalce.  Maybe "note" or "tag" would be good.
+
+- Add a hyperlink above the EpList to the source web page of the listview contents.  have the text of the link be the Series Name, maybe include the Series ID.  If the series ID is 0, just link to the search source (0 is invalid)
+
+- Get the search to run in a background thread, or at least prevent the locking of the UI.  Maybe I just need a "DispatchingCollection" for the EpList List View.
+
+- Do some color coding on the "Move to" textbox to indicate of the target folder or file is found.  Maybe make use of a validator object to provide a place to display messages/warnings.
+
+- Prevent autosearching on key'd in text to the Series Name text box.  The "problem" is that typing can autoselect an item in the DDL, which is good for other reasons, but bad for autosearch.
+
+- Get/Make a better "Drop here" image.
+
+- Enable drag/drop on the Source file Text box.
+
+- Replace the "rtbDropTVLog" with a listview for use as a File Queue
+
+- Impliment the Rename button which should just rename the source file in place.
+
+- Impliment the Move button which sould rename the source file in place, then add the file to a queue to be moved to the destination.  Begin the move process and use the queue to indicate move status, preferably with a progress bar.
+
+- Impliment the Move & Fetch button which renames the source file in place, adds the file to the queue to be moved and after the move completes fetches the Metadata from TheTVDb.

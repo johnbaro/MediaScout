@@ -1,0 +1,288 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:MediaScoutGUI.GUITypes"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" xmlns:Wpf_Controls="clr-namespace:Wpf.Controls;assembly=Wpf.SplitButton"
+	x:Class="MediaScoutGUI.MainWindow"
+	Title="MediaScout (20100421-FreQi)"
+    Loaded="Window_Loaded"
+    Closing="Window_Closing"
+	Width="834.536" Height="585" Icon="/MediaScoutGUI;component/Resources/tvscouticon.png" Background="{DynamicResource WindowBackground}" HorizontalContentAlignment="Right">
+
+	<Window.Resources>
+        <XmlDataProvider x:Key="LanguagesDS" Source="languages.xml" d:IsDataSource="True"/>
+        <ContextMenu x:Key="cmSeries">
+            <MenuItem Command="ApplicationCommands.Copy" />
+            <MenuItem Command="ApplicationCommands.Cut" />
+            <MenuItem Command="ApplicationCommands.Paste" />
+        </ContextMenu>
+        <DataTemplate x:Key="nameTemplate">
+			<TextBlock Text="{Binding Mode=OneWay, XPath=.}"/>
+		</DataTemplate>   
+        
+        <HierarchicalDataTemplate DataType="{x:Type src:TVShow}" ItemsSource="{Binding Seasons}">
+            <TextBlock Text="{Binding Name}" ContextMenu="{StaticResource cmSeries}"/>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate DataType="{x:Type src:Season}"  ItemsSource="{Binding Episodes}">
+            <TextBlock Text="{Binding Name}"/>
+        </HierarchicalDataTemplate>
+        
+        <HierarchicalDataTemplate DataType="{x:Type src:Episode}">
+            <StackPanel>
+                <TextBlock Text="{Binding Name}">
+                    <TextBlock.Style>
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding HasMetadata}" Value="False">
+                                <Setter Property="Foreground" Value="Red" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+                    
+                </TextBlock>
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <DataTemplate x:Key="dtMovies">
+            <StackPanel Tag="{Binding Name}">
+                <TextBlock x:Name="tbName" Text="{Binding Name}" >
+                    <TextBlock.Style>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding HasPoster}" Value="False">
+                                    <Setter Property="Foreground" Value="Brown" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding HasMetadata}" Value="False">
+                                    <Setter Property="Foreground" Value="Red" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+
+	<Grid x:Name="LayoutRoot">
+		<Image HorizontalAlignment="Right" Margin="0,6,13,0" VerticalAlignment="Top" Width="194" Height="190" Source="resources/tvscouticon.png" Stretch="Fill"/>
+		<TabControl Margin="8,95,8,8" x:Name="tcTabs" IsSynchronizedWithCurrentItem="True" Background="#BFFFFFFF" SelectionChanged="tcTabs_SelectionChanged">
+			<TabItem x:Name="tabTV" Background="{x:Null}" Header="TV">
+                <Grid>
+                    <Button HorizontalAlignment="Right" x:Name="btnBrowse" Width="74.829" Content="Browse" RenderTransformOrigin="0.508,0.521" Margin="0,31.52,8,0" Height="23" VerticalAlignment="Top" Click="btnBrowse_Click" />
+                    <TextBox Height="23" Margin="8,31.52,86.829,0" x:Name="txtBaseDir" VerticalAlignment="Top" />
+                    <Label x:Name="label1" Height="23.52" VerticalAlignment="Top" Content="Choose Start Directory" FontSize="14" FontWeight="Normal" Padding="0,0,0,0" Margin="8,8,0,0" HorizontalAlignment="Left" Width="142.171"/>
+                    <Button x:Name="btnFetch"  Content="Fetch Data" HorizontalAlignment="Right" Width="74.829" IsEnabled="False" Margin="0,58.52,8,0" RenderTransformOrigin="-0.809,3.451" Height="23" VerticalAlignment="Top" Click="btnFetch_Click" />
+                    <CheckBox Height="16" x:Name="chkRoot" VerticalAlignment="Top" Content="Enable Root/Batch Processing" Margin="8,58.52,0,0" Width="187.667" HorizontalAlignment="Left" />
+                    <TextBlock TextWrapping="Wrap" FontSize="10" Foreground="#FF474747" Text="Tick if the selected folder is the root folder (ie 'C:\TV') not a single series (ie 'C:\TV\Red Dwarf')" Margin="8,78.52,0,0" VerticalAlignment="Top" Height="36.123" Width="416.171" HorizontalAlignment="Left" />
+                    <RichTextBox x:Name="rtbLog" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Margin="8,114.643,8,8" HorizontalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+			<TabItem x:Name="tabManage" Header="Manage TV" Background="{x:Null}" AllowDrop="True">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="241*"/>
+						<ColumnDefinition Width="545.536*"/>
+					</Grid.ColumnDefinitions>
+                    <TreeView Margin="8,8,8,8" x:Name="tvTVShows" SelectedItemChanged="tvTVShows_SelectedItemChanged" IsTextSearchEnabled="True" AllowDrop="False"/>
+                    <Button HorizontalAlignment="Left" Margin="8,0,0,8" x:Name="btnFetchSelectedTV" VerticalAlignment="Bottom" Content="Fetch" Grid.Column="1" Width="55.823" Height="23" IsEnabled="False" Click="btnFetchSelectedTV_Click" />
+                    <Button HorizontalAlignment="Left" Margin="70,0,0,8" x:Name="btnSaveSelectedTV" VerticalAlignment="Bottom" Content="Save" Grid.Column="1" Width="55.823" Height="23" IsEnabled="False" Click="btnSaveSelectedTV_Click" />
+                    <Button HorizontalAlignment="Left" Margin="132,0,0,8" x:Name="btnStripSelectedTV" VerticalAlignment="Bottom" Content="Strip" Grid.Column="1" Width="55.823" Height="23" Click="btnStripSelectedTV_Click" />
+                    <TextBox Grid.Column="1" Margin="8,0,136.536,37" x:Name="tbShowDesc" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="85" VerticalAlignment="Bottom" TextChanged="tbShowDesc_TextChanged" />
+                    <Grid x:Name="grdSeriesView" Grid.Column="1" Margin="8,8,8,37">
+                        <Image x:Name="imgTVPoster" Margin="1,114,0,93" Stretch="Uniform" Width="110" HorizontalAlignment="Left" />
+                        <Image x:Name="imgTVBackdrop" Margin="117,115,128,93" Stretch="Uniform" />
+                        <Image x:Name="imgTVBanner" Margin="0,35,128.536,0" Stretch="Uniform" Height="74" VerticalAlignment="Top" />
+                        <Button x:Name="btnChangeTVPoster" Height="23.04" Width="105" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="btnChangeTVPoster_Click" Content="Change Poster" Margin="1,0,0,92" />
+                        <Button x:Name="btnChangeTVBackdrop" Height="23.04" Margin="117,0,0,91" VerticalAlignment="Bottom" Click="btnChangeTVBackdrop_Click" Content="Change Backdrop" HorizontalAlignment="Left" Width="105" />
+                        <Button x:Name="btnChangeTVBanner" Height="23.04" Margin="0,86,0,0" Click="btnChangeTVBanner_Click" Content="Change Banner" VerticalAlignment="Top" HorizontalAlignment="Left" Width="105" />
+                        <TextBox x:Name="tbSelectedSeries" Height="26" Margin="0,3,128.536,0" FontSize="14" FontWeight="Bold" Background="{x:Null}" VerticalAlignment="Top" TextChanged="tbSelectedSeries_TextChanged" Text="Selected Series"/>
+                        <TextBox x:Name="tbAired" Height="23" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" TextAlignment="Center" />
+                        <Label x:Name="lblAired" Height="28" HorizontalAlignment="Right" Margin="0,0,76,-5" VerticalAlignment="Bottom" Width="45" HorizontalContentAlignment="Right" Content="Aired"/>
+                        <TextBox x:Name="tbRating" Height="23" HorizontalAlignment="Right" Margin="0,0,0,29" VerticalAlignment="Bottom" Width="75" TextAlignment="Center" />
+                        <Label x:Name="lblRating" Height="28" Margin="0,0,76,24" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="45" HorizontalContentAlignment="Right" Content="Rating"/>
+                        <TextBox x:Name="tbNetwork" Height="23" Margin="0,0,0,58" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75" TextAlignment="Center" />
+                        <Label x:Name="lblNetwork" Height="28" HorizontalAlignment="Right" Margin="0,0,76,53" VerticalAlignment="Bottom" Width="45" HorizontalContentAlignment="Right" Content="Netw."/>
+                        <Label x:Name="lblActors" Height="28.04" HorizontalAlignment="Right" Margin="0,115,66,0" VerticalAlignment="Top" Width="53" Content="Actors"/>
+                        <TextBox x:Name="tbActors" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="50" HorizontalAlignment="Right" Margin="0,139.04,-1,178" VerticalAlignment="Bottom" Width="120" />
+                        <Label x:Name="lblGenres" HorizontalAlignment="Right" Margin="0,0,66,139" Width="53" Height="28.04" VerticalAlignment="Bottom" Content="Genres"/>
+                        <TextBox x:Name="tbGenres" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="50" HorizontalAlignment="Right"  Margin="0,0,-1,93" VerticalAlignment="Bottom" Width="120" />
+                    </Grid>
+                    <Grid Grid.Column="1" Margin="8,8,9,162" x:Name="grdSeasonView" Visibility="Hidden">
+                    	<Label Height="28" HorizontalAlignment="Left" x:Name="lblSelectedSeason" FontSize="14" FontWeight="Bold"  VerticalAlignment="Top" Content="Selected Season"/>
+                        <Image Margin="8,33.75,0,0" x:Name="imgSeasonPoster" Stretch="Uniform" HorizontalAlignment="Left" Height="174.54" VerticalAlignment="Top" Width="174.54" />
+                    </Grid>
+					<Grid Grid.Column="1" Margin="8,8,9,162" x:Name="grdEpisodeView">
+						<Image Margin="8,8,0,0" x:Name="imgEpisodePoster"  Stretch="Uniform" HorizontalAlignment="Left" Height="200.08" VerticalAlignment="Top" />
+						<Button Content="Grab Poster From File" d:LayoutOverrides="Width, Height" Margin="8,213.83,0,0" x:Name="btnEpisodePosterFromFile" Click="btnEpisodePosterFromFile_Click" HorizontalAlignment="Left" Width="132.059" Height="21.96" VerticalAlignment="Top" />
+                    </Grid>
+                </Grid>
+			</TabItem>
+			<TabItem x:Name="tabDropTV" Background="{x:Null}" Header="Drop TV">
+            	<Grid>
+            		<Label HorizontalAlignment="Left" Margin="8,38,0,0" VerticalAlignment="Top" Width="86" Height="26" Content="Series Name"/>
+            		<Label HorizontalAlignment="Left" Margin="8,70,0,0" VerticalAlignment="Top" Width="86" Height="26" Content="Episode Name"/>
+            		<Label Margin="366,38,371.536,0" VerticalAlignment="Top" Height="26" Content="Season"/>
+            		<Label HorizontalAlignment="Right" Margin="0,38,252.981,0" VerticalAlignment="Top" Width="55" Height="26" Content="Episode"/>
+            		<Canvas Margin="0,8,8,0" VerticalAlignment="Top" Height="118" RenderTransformOrigin="2.3,-0.16" HorizontalAlignment="Right" Width="189.427" Drop="ManageTVDrop" AllowDrop="True">
+						<Image HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" Height="32" Source="Resources/film_go_l.png" Stretch="Fill" Canvas.Left="8" Canvas.Top="8"/>
+					</Canvas>
+            		<Label HorizontalAlignment="Left" Margin="8,100,0,0" Width="86" Content="Move to..." VerticalAlignment="Top" Height="26"/>
+            		<Label HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Width="86" Height="26" Content="Source..."/>
+            		<Label Margin="366,70,371.536,0" Content="Suffix" VerticalAlignment="Top" Height="26"/>
+            		<ComboBox x:Name="cboSeriesName" Margin="98,42.04,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="246" Height="21.96" IsEditable="True"/>
+            		<TextBox x:Name="tbSeasonNum" HorizontalAlignment="Right" Margin="0,40,319.982,0" VerticalAlignment="Top" Text="" TextWrapping="NoWrap" Width="47.553" Height="21.96" MaxLines="1" />
+            		<TextBox x:Name="tbEpNum" Margin="0,40,201.427,0" VerticalAlignment="Top" Text="" TextWrapping="NoWrap" HorizontalAlignment="Right" Width="47.554" Height="21.96" MaxLines="1" />
+            		<TextBox x:Name="tbEpName" HorizontalAlignment="Left" Margin="98,72,0,0" VerticalAlignment="Top" Text="" TextWrapping="NoWrap" Width="264" Height="21.96" MaxLines="1" />
+            		<ComboBox x:Name="cboSuffix" HorizontalAlignment="Right" Margin="0,72,219.428,0" VerticalAlignment="Top" Width="148.107" IsEditable="True" Height="21.96"/>
+            		<TextBox x:Name="tbTVFileSource" Margin="98,10,201.428,0" VerticalAlignment="Top" Text="" TextWrapping="NoWrap" Height="21.96" AllowDrop="True" Drop="ManageTVDrop" MaxLines="1" IsReadOnly="True" />
+            		<TextBox x:Name="tbTVFileTarget" Margin="98,104.04,201.428,0" VerticalAlignment="Top" Text="" TextWrapping="NoWrap" Height="21.96" MaxLines="1" />
+            		<CheckBox x:Name="chkSeriesNameLock" Margin="348,45.04,0,0" VerticalAlignment="Top" Content="" HorizontalAlignment="Left" Width="14" Click="chkSeriesNameLock_CheckChanged"   />
+            		<CheckBox Margin="0,75,201.428,0" VerticalAlignment="Top" Content="" HorizontalAlignment="Right" Width="14" Click="CheckBox_CheckChanged" x:Name="chkSuffixLock" />
+                    <!--<ListView x:Name="lvEpGuide" Margin="98,140,326.536,8" ItemsSource="{Binding Path=EpList}">
+                        <ListView.View>
+            				<GridView>
+            					<GridViewColumn Header="S-E" DisplayMemberBinding="{Binding Path=SE}"/>
+            					<GridViewColumn Header="Prod" DisplayMemberBinding="{Binding Path=ProdNum}"/>
+            					<GridViewColumn Header="Air Date" DisplayMemberBinding="{Binding Path=AirDate}"/>
+            					<GridViewColumn Header="Episode Name" DisplayMemberBinding="{Binding Path=EpName}"/>
+            				</GridView>
+            			</ListView.View>
+                    </ListView>-->
+                    <ListView x:Name="lvEpGuide" Margin="100,140,326.536,8" SelectionChanged="lvEpGuide_SelectionChanged">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="S-E" DisplayMemberBinding="{Binding Path=SE}"/>
+                                <GridViewColumn Header="Prod" DisplayMemberBinding="{Binding Path=ProdNum}"/>
+                                <GridViewColumn Header="Air Date" DisplayMemberBinding="{Binding Path=AirDate}"/>
+                                <GridViewColumn Header="Episode Name" DisplayMemberBinding="{Binding Path=Epname}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <RichTextBox x:Name="rtbDropTVLog" Margin="0,140,8,8" HorizontalAlignment="Right" Width="299.981">
+            			<FlowDocument>
+            				<Paragraph><Run Text="File Move Progress box..."/></Paragraph>
+            			</FlowDocument>
+            		</RichTextBox>
+            		<Button HorizontalAlignment="Left" Margin="8,174,0,0" Width="86" Content="Move &amp; Fetch" VerticalAlignment="Top"/>
+            		<Button HorizontalAlignment="Left" Margin="8,199.96,0,190.12" Width="86" Content="Move" d:LayoutOverrides="Height"/>
+            		<Wpf_Controls:SplitButton Height="30" x:Name="btnsSearchSeries"  Width="86" Click="btnSearchSeries_Click" Mode="Split" Placement="Bottom" HorizontalAlignment="Left" Margin="8,141,0,0" VerticalAlignment="Top">
+						<Wpf_Controls:SplitButton.Content>
+						<StackPanel Orientation="Horizontal">
+							<Image x:Name="img_SearchSeries" Source="Resources\logo_thetvdb_sm.png" Width="18" Height="17"/>
+							<TextBlock Text="Search" Margin="3,0,0,0"/>
+						</StackPanel>
+						</Wpf_Controls:SplitButton.Content>
+            			<MenuItem Header="theTVDB" Click="btnsSearch_theTVDB_Click">
+							<MenuItem.Icon>
+								<Image Source="Resources\logo_thetvdb_sm.png" Width="18" Height="17"/>
+							</MenuItem.Icon>
+						</MenuItem>
+            			<MenuItem Header="EpGuides" Click="btnsSearch_EpGuides_Click">
+							<MenuItem.Icon>
+								<Image Source="Resources\logo_epguides_sm.png" Width="18" Height="17"/>
+							</MenuItem.Icon>
+						</MenuItem>
+                        <MenuItem Header="TVRage" Click="btnsSearch_TVRage_Click">
+                            <MenuItem.Icon>
+                                <Image Source="Resources\logo_tvrage_sm.png" Width="18" Height="17"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </Wpf_Controls:SplitButton>
+            		<Button HorizontalAlignment="Left" Margin="8,0,0,164.16" Width="86" Content="Rename" VerticalAlignment="Bottom"/>
+                    <Button Height="21.96" HorizontalAlignment="Left" Margin="8,0,0,136" VerticalAlignment="Bottom" Width="86" Name="tbClearList" Click="tbClearList_Click">Clear</Button>
+                </Grid>
+            </TabItem>
+			<TabItem x:Name="tabMovies" Background="{x:Null}" Header="Movies">
+				<Grid x:Name="grdMovies">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="23"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="248.646*"/>
+						<ColumnDefinition Width="537.89*"/>
+					</Grid.ColumnDefinitions>
+					<ListBox Margin="8,8,12.861,8" IsSynchronizedWithCurrentItem="True" x:Name="lstMovies" ItemTemplate="{StaticResource dtMovies}" SelectionChanged="lstMovies_SelectionChanged" />
+					<Label Margin="0,6,46.217,0" x:Name="lblMovieTitle" VerticalAlignment="Top" Height="28.24" Content="Selected Movie Title&#xa;" FontSize="14" FontWeight="Bold" Grid.Column="1" Visibility="Hidden"/>
+                    <Border  Margin="0,34.24,0,0" Grid.Column="1" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Width="133" Height="182.8" VerticalAlignment="Top">
+                        <Image x:Name="imgMoviePoster"  HorizontalAlignment="Left" Width="131" Stretch="Uniform" Height="182.8" VerticalAlignment="Top" />
+                    </Border>
+					<Border Grid.Column="1" Margin="137,34.24,0,0" BorderThickness="1" BorderBrush="Black" Height="182.8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="325">
+						<Image x:Name="imgMovieBackdrop" Stretch="Uniform" Height="182.8" VerticalAlignment="Top" HorizontalAlignment="Left" Width="324.977" />					
+					</Border>
+					<Button Margin="0,0,0,0" x:Name="btnFetchSelectedMovie" Content="Fetch Selected" d:LayoutOverrides="Height" Click="btnFetchSelectedMovie_Click" HorizontalAlignment="Left" Width="89.657" Grid.Row="1" />
+					<Button Margin="0,223.04,0,0" x:Name="btnChangePoster" Content="Change Poster" d:LayoutOverrides="Width, Height" Click="btnChangePoster_Click" IsEnabled="False" HorizontalAlignment="Left" Width="89" Height="21.96" VerticalAlignment="Top" Grid.Column="1" />
+                    <Button HorizontalAlignment="Left" IsEnabled="False" Margin="145,223.04,0,0" x:Name="btnChangeMovieBackdrop" Width="108.75" Grid.Column="1" Click="btnChangeMovieBackdrop_Click" Height="21.96" VerticalAlignment="Top" Content="Change Backdrop"/>
+                    
+                    <Label Height="26.915" Margin="10,253.696,0,0" x:Name="label7" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="54" Padding="0" FontWeight="Bold" Content="Synopsis"/>
+                    <Label Height="26.915" Margin="8,314.79,0,0" x:Name="label7_Copy" VerticalAlignment="Top" HorizontalAlignment="Left" Width="56" Padding="0" FontWeight="Bold" Content="Length" Grid.Column="1"/>
+                    <Label Height="26.915" Margin="137,345.705,0,0" x:Name="label7_Copy2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="55" Padding="0" FontWeight="Bold" Content="TMDB ID" Grid.Column="1"/>
+                    <Label Height="26.915" Margin="8,345.705,0,0" x:Name="label7_Copy3" VerticalAlignment="Top" HorizontalAlignment="Left" Width="55" Padding="0" FontWeight="Bold" Content="Year" Grid.Column="1"/>
+                    <Label Height="26.915" Margin="149,314.79,0,0" x:Name="label7_Copy1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="43" Padding="0" FontWeight="Bold" Content="Rating" Grid.Column="1"/>
+
+                    <TextBox Grid.Column="1" Margin="68,254.04,0,0" x:Name="tbMovieDesc" TextWrapping="Wrap" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="58.75" VerticalAlignment="Top" HorizontalAlignment="Left" Width="462.89" />
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Rating}" TextWrapping="Wrap" Margin="192,314.79,0,0" d:LayoutOverrides="Height" Grid.Column="1" Width="67.553" x:Name="txtRating" Height="21.96" />
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding TMDbId}" TextWrapping="Wrap" Margin="192,345.705,0,0" d:LayoutOverrides="Height" Grid.Column="1" Width="67.553" x:Name="txtTMDBID" Height="21.96" />
+                    <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Text="{Binding Length}" TextWrapping="Wrap" Grid.Column="1" d:LayoutOverrides="Height" Margin="68,314.79,0,0" x:Name="txtLength" Width="65" Height="21.96" />
+                    <TextBox HorizontalAlignment="Left" Margin="68,345.705,0,0" VerticalAlignment="Top" Text="{Binding Year}" TextWrapping="Wrap" Grid.Column="1" Width="65" x:Name="txtYear" Height="21.96" />
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Top" Content="Save" Grid.Column="1" d:LayoutOverrides="Height" Margin="267.474,345.705,0,0" x:Name="btnSaveMovie" Width="44.503" Height="21.96" Click="btnSaveMovie_Click" />
+                </Grid>
+			</TabItem>
+			<TabItem x:Name="tabOptions" Header="Options" Background="{x:Null}">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="0.601*"/>
+						<RowDefinition Height="0.399*"/>
+					</Grid.RowDefinitions>
+					<GroupBox Margin="8,0,8,8" Header="TV Options">
+						<Grid Height="Auto">
+							<Button HorizontalAlignment="Right" VerticalAlignment="Top" Content="Browse" Margin="0,12,155.277,0" x:Name="btnBrowseTVFolder" Width="75" Height="23" Click="btnBrowseTVFolder_Click" />
+							<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="TV Shows Folder" d:LayoutOverrides="Height" Margin="8,8,0,0"/>
+							<TextBox VerticalAlignment="Top" Text="" TextWrapping="Wrap" d:LayoutOverrides="Height" Margin="109.587,12,234.277,0" x:Name="txtTVFolder" RenderTransformOrigin="0.431,0.346"/>
+							<CheckBox IsChecked="True" Margin="0,52.943,218.6,0" x:Name="chkRename" Content="Rename Files" RenderTransformOrigin="0.584,0.619" VerticalAlignment="Top" Height="16.017" HorizontalAlignment="Right" Width="115.4" />
+							<CheckBox IsChecked="True" Margin="8,53,0,0" x:Name="chkForceUpdate" Height="Auto" HorizontalAlignment="Left" Width="Auto" Content="Force Update" VerticalAlignment="Top"/>
+							<CheckBox Height="15.96" IsChecked="True" Margin="8,111.678,0,0" x:Name="chkEpPosters" VerticalAlignment="Top" Content="Fetch Episode Posters" HorizontalAlignment="Left" Width="132.06" d:LayoutOverrides="Height"/>
+							<CheckBox IsChecked="True" Margin="8,92.921,0,0" x:Name="chkSeasonPosters" HorizontalAlignment="Left" Width="128.233" Content="Fetch Season Posters" FontSize="12" FontWeight="Normal" VerticalAlignment="Top" Height="14.758" />
+							<CheckBox IsChecked="True" Margin="8,131.638,0,0" x:Name="chkMove" Content="Move Unsorted Files" Height="15.96" VerticalAlignment="Top" HorizontalAlignment="Left" Width="125.187" d:LayoutOverrides="Height" />
+							<Grid Margin="0,73.017,29,7.853" x:Name="grdRename" HorizontalAlignment="Right" Width="305">
+								<TextBox Margin="0,26.047,0,0" x:Name="txtRenameFormat" VerticalAlignment="Top" Height="21" Text="" HorizontalAlignment="Left" Width="138" />
+								<Label HorizontalAlignment="Left" x:Name="label2" Width="120" VerticalAlignment="Top" Height="26.047" Content="Rename Format" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment"/>
+								<TextBlock Margin="167,5,8,0" TextWrapping="Wrap" Height="83.851" VerticalAlignment="Top"><Run FontWeight="Bold" Text="Variables: " Language="en-au"/><LineBreak/><Run Text="{}{0} = Series Name" Language="en-au"/><LineBreak/><Run Text="{}{1} = Season Number" Language="en-au"/><LineBreak/><Run Text="{}{2} = Episode Name" Language="en-au"/><LineBreak/><Run Text="{}{3} = Episode Number" Language="en-au"/></TextBlock>
+								<TextBox Margin="0,0,0,37.712" x:Name="txtSpacingChar" VerticalAlignment="Bottom" Height="21" Text="" HorizontalAlignment="Left" Width="138" />
+								<Label HorizontalAlignment="Left" x:Name="label2_Copy" Width="120" Content="Spacing Character" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment" Margin="0,51.047,0,58.712"/>
+								<Label Margin="0,0,0,7.752" VerticalAlignment="Bottom" Content="Ex: " Height="25.96"/>
+							</Grid>
+							<CheckBox Height="Auto" IsChecked="True" Margin="8,72.96,0,0" x:Name="chkSeriesPosters" VerticalAlignment="Top" Content="Fetch Series Posters" FontSize="12" FontWeight="Normal" HorizontalAlignment="Left" Width="Auto"/>
+							<Label Margin="219.1,107.74,0,0" Content="Language" FontWeight="Bold" Padding="0,0,0,0" RenderTransformOrigin="0.49,-3.016" HorizontalAlignment="Left" Width="61" Height="16.858" VerticalAlignment="Top" />
+							<ComboBox IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding Mode=Default, Source={StaticResource LanguagesDS}, XPath=/Languages/Language/name}" ItemTemplate="{DynamicResource nameTemplate}" x:Name="lstLanguages" Margin="219.1,0,0,69.078" Height="23" d:LayoutOverrides="HorizontalAlignment" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="120.136" />
+							<TextBox Margin="219.1,68.903,0,0" x:Name="txtSeasonFolderName" VerticalAlignment="Top" Height="20.96" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Width="120.036" />
+							<Label VerticalAlignment="Top" Content="Season Folder Name" Margin="219,52.943,0,0" FontWeight="Bold" Padding="0,0,0,0" Height="15.96" d:LayoutOverrides="Height" HorizontalAlignment="Left" Width="120.136" />
+						</Grid>
+					</GroupBox>
+					<GroupBox Margin="8,8,8,0" Grid.Row="1" Header="Movie Options" Height="60" VerticalAlignment="Top">
+						<Grid>
+                            <TextBox Height="23" Margin="109.587,6,234.277,0" x:Name="txtMoviesFolder" VerticalAlignment="Top" />
+                            <Button Height="23" Margin="0,6,155.277,0" x:Name="btnBrowseMovies" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" Click="btnBrowseMovies_Click" Content="Browse"/>
+                            <Label Height="28" HorizontalAlignment="Left" Margin="8,4.52,0,0" x:Name="label3" VerticalAlignment="Top" Width="120" Content="Movies Folder"/>
+                        </Grid>
+                    </GroupBox>
+                    <Label Height="28" HorizontalAlignment="Left" Margin="21.9,0,0,46" x:Name="label4" VerticalAlignment="Bottom" Width="120" Grid.Row="1" Content="Video Filetypes"/>
+                    <TextBox Margin="123.31,0,248.277,49" x:Name="txtAllowedFiletypes" Height="23" Grid.Row="1" VerticalAlignment="Bottom" LostFocus="txtAllowedFiletypes_LostFocus" />
+                    <Label Height="28" Margin="119,0,260,27" x:Name="label5" VerticalAlignment="Bottom" Grid.Row="1" FontSize="10" Content="(separate with a semi colon)"/>
+                </Grid>
+			</TabItem>
+            <TabItem x:Name="tabAutomator" Header="Auto-tron"  Background="{x:Null}">
+                <Grid>
+                    <CheckBox Height="16" HorizontalAlignment="Left" Margin="10,6,0,0" x:Name="chkAutotron" VerticalAlignment="Top" Width="195" Checked="chkAutotron_Checked" Unchecked="chkAutotron_Unchecked" Content="Enable Autotron Magics"/>
+                    <RichTextBox Margin="10,48,10,5.92" x:Name="rtbAutotronLog" IsEnabled="False" ScrollViewer.VerticalScrollBarVisibility="Visible" />
+                    <Label Height="20" HorizontalAlignment="Left" Margin="10,28,0,0" x:Name="label6" VerticalAlignment="Top" Width="40" Padding="0" IsEnabled="True" Content="Log"/>
+                </Grid>
+            </TabItem>
+		</TabControl>
+		<Label Margin="8,19,265,0" VerticalAlignment="Top" Height="57" Content="MediaScout" FontSize="36" FontWeight="Bold"/>
+	</Grid>
+</Window>
