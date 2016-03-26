@@ -449,9 +449,9 @@ namespace MediaScoutGUI
             MovieFolder = MediaScoutGUI.Properties.Settings.Default.MovieFolder;
 
             /* Load GUI */
-            txtRenameFormat.Text = MediaScoutGUI.Properties.Settings.Default.fileformat;
             txtSpacingChar.Text = MediaScoutGUI.Properties.Settings.Default.spaceReplacement;
             txtNumberPadding.Text = MediaScoutGUI.Properties.Settings.Default.numPadding;
+            txtRenameFormat.Text = MediaScoutGUI.Properties.Settings.Default.fileformat;
             // AARGGHHH! I hate how the combobox pretends to be a simple DropDownList but ISN'T AT ALL!!
             //// Set the selected item in the cboBox by looping through the items and selecting the index of the matching tag
             //for (int row = 0; row < cboNumberPadding.Items.Count; row++)

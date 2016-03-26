@@ -95,40 +95,59 @@ namespace MediaScoutGUI.GUITypes
 
         public TVShow(String filepath, string name)
         {
-            this.filepath = filepath;
-            this.foldername = name;
-            this.name = name;
 
-            if (File.Exists(filepath + @"\series.xml"))
+            string xmlFile = filepath + @"\series.xml";
+            try
             {
-                hasMetadata = true;
-                XmlDocument xdoc = new XmlDocument();
-                xdoc.Load(filepath + "\\series.xml");
-                XmlNode node = xdoc.DocumentElement;
+                this.filepath = filepath;
+                this.foldername = name;
+                this.name = name;
 
-                this.id = Int32.Parse(node.SelectSingleNode("id").InnerText);
 
-                this.name = node.SelectSingleNode("SeriesName").InnerText;
-                this.actors = node.SelectSingleNode("Actors").InnerText;
-                this.firstaired = node.SelectSingleNode("FirstAired").InnerText;
-                this.rating = node.SelectSingleNode("Rating").InnerText;
-                this.runtime = node.SelectSingleNode("Runtime").InnerText;
-                this.genre = node.SelectSingleNode("Genre").InnerText;
-                this.network = node.SelectSingleNode("Network").InnerText;
-
-                if (node.SelectSingleNode("Overview") != null)
-                    overview = node.SelectSingleNode("Overview").InnerText;
-            }
-
-            seasons = new ObservableCollection<Season>();
-
-            foreach (DirectoryInfo di in new DirectoryInfo(filepath).GetDirectories())
-            {
-                if (di.Name != "metadata")
+                if (File.Exists(xmlFile))
                 {
-                    GUITypes.Season s = new GUITypes.Season(di.FullName, di.Name, this);
-                    seasons.Add(s);
+                    hasMetadata = true;
+                    XmlDocument xdoc = new XmlDocument();
+                    xdoc.Load(filepath + "\\series.xml");
+                    XmlNode node = xdoc.DocumentElement;
+
+                    XmlNode idNode = node.SelectSingleNode("id");
+
+                    this.id = Int32.Parse(idNode.InnerText);
+
+                    this.name = node.SelectSingleNode("SeriesName").InnerText;
+                    this.actors = node.SelectSingleNode("Actors").InnerText;
+                    this.firstaired = node.SelectSingleNode("FirstAired").InnerText;
+                    this.rating = node.SelectSingleNode("Rating").InnerText;
+                    this.runtime = node.SelectSingleNode("Runtime").InnerText;
+                    this.genre = node.SelectSingleNode("Genre").InnerText;
+                    this.network = node.SelectSingleNode("Network").InnerText;
+
+                    if (node.SelectSingleNode("Overview") != null)
+                        overview = node.SelectSingleNode("Overview").InnerText;
                 }
+
+                seasons = new ObservableCollection<Season>();
+
+                foreach (DirectoryInfo di in new DirectoryInfo(filepath).GetDirectories())
+                {
+                    if (di.Name != "metadata")
+                    {
+                        GUITypes.Season s = new GUITypes.Season(di.FullName, di.Name, this);
+                        seasons.Add(s);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string xmlFileBackup = xmlFile + ".bak";
+
+                Console.WriteLine("Error processing xml file {0}{1}Exception: {2}{1}Moved file to {3}", xmlFile, Environment.NewLine, ex.Message, xmlFileBackup);
+
+                File.Move(xmlFile, xmlFileBackup);
+
+                Console.WriteLine(ex.ToString());
+                
             }
         }
         public override String ToString()
