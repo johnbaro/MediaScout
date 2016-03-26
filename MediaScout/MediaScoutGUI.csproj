@@ -184,5 +184,11 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaScoutLibrary\MediaScout.csproj">
+      <Project>{b4f9e059-3ab2-4ecd-9818-e64a1dbb56c8}</Project>
+      <Name>MediaScout</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
