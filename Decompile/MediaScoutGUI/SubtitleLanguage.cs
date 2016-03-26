@@ -1,0 +1,56 @@
+using System;
+using System.CodeDom.Compiler;
+using System.Xml.Serialization;
+
+[GeneratedCode("svcutil", "4.0.30319.1"), XmlType(Namespace = "http://www.sublight.si/")]
+[Serializable]
+public enum SubtitleLanguage
+{
+	Slovenian,
+	Croatian,
+	SerbianLatin,
+	English,
+	Spanish,
+	French,
+	Greek,
+	German,
+	Russian,
+	Chinese,
+	Portuguese,
+	Dutch,
+	Italian,
+	Romanian,
+	Czech,
+	Arabic,
+	Polish,
+	Turkish,
+	Swedish,
+	Finnish,
+	Hungarian,
+	SpanishArgentina,
+	Danish,
+	Hebrew,
+	Estonian,
+	Slovak,
+	PortugueseBrazil,
+	Indonesian,
+	Persian,
+	Bulgarian,
+	Japanese,
+	Albanian,
+	Belarusian,
+	BosnianLatin,
+	Hindi,
+	Irish,
+	Icelandic,
+	Catalan,
+	Korean,
+	Latvian,
+	Lithuanian,
+	Macedonian,
+	Norwegian,
+	Thai,
+	Ukrainian,
+	Vietnamese,
+	Unknown
+}

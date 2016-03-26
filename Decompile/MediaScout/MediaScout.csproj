@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{49EF9464-203C-4204-B6F7-6DD7B54275C8}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <AssemblyName>MediaScout</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ImdbServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.VisualBasic" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MediaScout.Providers\ImdbMovieProvider.cs" />
+    <Compile Include="MediaScout.Providers\IMetadataProvider.cs" />
+    <Compile Include="MediaScout.Providers\IMovieMetadataProvider.cs" />
+    <Compile Include="MediaScout.Providers\ITVMetadataProvider.cs" />
+    <Compile Include="MediaScout.Providers\MoviePosterType.cs" />
+    <Compile Include="MediaScout.Providers\TheMovieDBProvider.cs" />
+    <Compile Include="MediaScout.Providers\TheTVDBProvider.cs" />
+    <Compile Include="MediaScout.Providers\TVShowPosterType.cs" />
+    <Compile Include="MediaScout\ActorsNFO.cs" />
+    <Compile Include="MediaScout\EpisodeInfo.cs" />
+    <Compile Include="MediaScout\EpisodeNFO.cs" />
+    <Compile Include="MediaScout\EpisodeXML.cs" />
+    <Compile Include="MediaScout\Genre.cs" />
+    <Compile Include="MediaScout\GetID.cs" />
+    <Compile Include="MediaScout\IOFunctions.cs" />
+    <Compile Include="MediaScout\MediaScoutMessage.cs" />
+    <Compile Include="MediaScout\MovieNFO.cs" />
+    <Compile Include="MediaScout\MovieScout.cs" />
+    <Compile Include="MediaScout\MovieScoutOptions.cs" />
+    <Compile Include="MediaScout\MovieType.cs" />
+    <Compile Include="MediaScout\MovieXML.cs" />
+    <Compile Include="MediaScout\Person.cs" />
+    <Compile Include="MediaScout\Posters.cs" />
+    <Compile Include="MediaScout\Season.cs" />
+    <Compile Include="MediaScout\StringEnum.cs" />
+    <Compile Include="MediaScout\StringValueAttribute.cs" />
+    <Compile Include="MediaScout\Studio.cs" />
+    <Compile Include="MediaScout\TVScout.cs" />
+    <Compile Include="MediaScout\TVScoutOptions.cs" />
+    <Compile Include="MediaScout\TVShowNFO.cs" />
+    <Compile Include="MediaScout\TVShowXML.cs" />
+    <Compile Include="MediaScout\VideoInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
