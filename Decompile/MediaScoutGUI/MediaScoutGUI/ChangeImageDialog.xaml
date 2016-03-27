@@ -1,0 +1,68 @@
+<Window x:Class="MediaScoutGUI.ChangeImageDialog" Title="Select Poster" Width="835" Height="586" Icon="/MediaScoutGUI.Resources/tvscouticon.png" WindowStartupLocation="CenterOwner" IsEnabled="True" Background="#FF808080" Loaded="Window_Loaded" Closed="Window_Closed" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Window.Resources>
+    <ContextMenu x:Key="cmLocalPostersMain">
+      <MenuItem Header="Add" Click="btnAddPoster_Click" />
+      <MenuItem Header="Delete All" Click="btnDeleteAllPoster_Click" />
+    </ContextMenu>
+    <ContextMenu x:Key="cmLocalPosters">
+      <MenuItem Header="Delete" Click="btnDeletePoster_Click" />
+    </ContextMenu>
+    <Style x:Key="{x:Type ListBox}" TargetType="{x:Type ListBox}">
+      <Setter Property="ItemsControl.ItemsPanel">
+        <Setter.Value>
+          <ItemsPanelTemplate>
+            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Center" />
+          </ItemsPanelTemplate>
+        </Setter.Value>
+      </Setter>
+      <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    </Style>
+    <DataTemplate x:Key="dtBackdrops">
+      <StackPanel Height="220" Width="270" Margin="10" ContextMenu="{StaticResource cmLocalPosters}">
+        <Image Margin="10" Height="140" Width="250" Stretch="Uniform" VerticalAlignment="Top" Source="{Binding Path=Thumb}" />
+        <TextBlock TextBlock.Foreground="#FFFFFFFF" Margin="10,0" HorizontalAlignment="Center" Text="{Binding Path=Resolution}" />
+        <TextBlock HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom">
+          <Hyperlink x:ConnectionId="5" NavigateUri="{Binding Path=Poster}">
+            <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=PosterFileName}" />
+          </Hyperlink>
+        </TextBlock>
+      </StackPanel>
+    </DataTemplate>
+    <DataTemplate x:Key="dtPosters">
+      <StackPanel Height="220" Width="140" Margin="10" ContextMenu="{StaticResource cmLocalPosters}">
+        <Image Margin="10" Height="150" Width="105" Stretch="Uniform" VerticalAlignment="Top" Source="{Binding Path=Thumb}" />
+        <TextBlock TextBlock.Foreground="#FFFFFFFF" Margin="10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Resolution}" />
+        <TextBlock Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+          <Hyperlink x:ConnectionId="6" NavigateUri="{Binding Path=Poster}">
+            <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=PosterFileName}" />
+          </Hyperlink>
+        </TextBlock>
+      </StackPanel>
+    </DataTemplate>
+  </Window.Resources>
+  <Grid Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="86*" />
+      <RowDefinition Height="73*" />
+      <RowDefinition Height="87*" />
+      <RowDefinition Height="77*" />
+      <RowDefinition Height="97*" />
+      <RowDefinition Height="74*" />
+      <RowDefinition Height="54*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="200*" />
+      <ColumnDefinition Width="70*" />
+      <ColumnDefinition Width="275*" />
+      <ColumnDefinition Width="73*" />
+      <ColumnDefinition Width="195*" />
+    </Grid.ColumnDefinitions>
+    <ListBox Name="lbPosters" Margin="8,0" IsSynchronizedWithCurrentItem="True" Grid.ColumnSpan="5" Background="#00FFFFFF" BorderThickness="0" Grid.RowSpan="3" SelectionChanged="lbPosters_SelectionChanged" />
+    <Button Name="btnSelectPoster" Margin="8,18.878,4,8" Content="Select Poster" Grid.Row="6" IsEnabled="False" Grid.ColumnSpan="2" Click="btnSelectPoster_Click" />
+    <Button Name="btnCancel" Margin="4,17.838,8,8" Grid.Column="3" Grid.Row="6" Grid.ColumnSpan="2" Click="btnCancel_Click">Cancel</Button>
+    <Button Name="btnDownloadAll" Margin="4,18.838,4,8" Grid.Column="2" Grid.Row="6" IsEnabled="False" Click="btnDownloadAll_Click">Download All</Button>
+    <Label Name="lblNoPosters" FontSize="30" FontWeight="Bold" Foreground="#FFF5F5F5" Grid.ColumnSpan="3" HorizontalContentAlignment="Center" Margin="0" VerticalContentAlignment="Center" Visibility="Visible" Grid.Column="1" Grid.Row="1">Loading...</Label>
+    <ListBox Name="lblocalPosters" ContextMenu="{StaticResource cmLocalPostersMain}" Grid.ColumnSpan="5" IsSynchronizedWithCurrentItem="True" Margin="8,0" Background="#00FFFFFF" BorderThickness="0" Height="248" VerticalAlignment="Bottom" Grid.RowSpan="4" Grid.Row="2" SelectionChanged="lblocalPosters_SelectionChanged" />
+    <TextBlock Name="lbNoLocals" ContextMenu="{StaticResource cmLocalPostersMain}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Stretch" Margin="0" Text="TextBlock" VerticalAlignment="Stretch" TextWrapping="Wrap" TextBlock.FontSize="30" TextBlock.FontWeight="Bold" TextBlock.Foreground="#FFFFFFFF" Grid.ColumnSpan="3" TextBlock.TextAlignment="Center" />
+  </Grid>
+</Window>

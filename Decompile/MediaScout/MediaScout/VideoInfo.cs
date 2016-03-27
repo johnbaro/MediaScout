@@ -336,8 +336,8 @@ namespace MediaScout
 		[System.Runtime.InteropServices.ComImport]
 		public class MediaDet
 		{
-			[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]
-			public extern MediaDet();
+			//[System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.InternalCall)]
+			//public extern MediaDet();
 		}
 
 		private static System.Guid videoType = new System.Guid("73646976-0000-0010-8000-00AA00389B71");

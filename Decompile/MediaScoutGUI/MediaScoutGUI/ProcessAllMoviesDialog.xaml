@@ -1,0 +1,110 @@
+<Window x:Class="MediaScoutGUI.ProcessAllMoviesDialog" Title="Process Movies" Height="454" Width="750" Background="#FF808080" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded" Closed="Window_Closed" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:stb="clr-namespace:MediaScoutGUI.Controls;assembly=MediaScoutGUI,Version=3.0.4.159,Culture=neutral,PublicKeyToken=1d3847494e713237">
+  <Window.TaskbarItemInfo>
+    <TaskbarItemInfo>
+      <TaskbarItemInfo.ThumbButtonInfos>
+        <ThumbButtonInfoCollection>
+          <ThumbButtonInfo x:Name="_tbPauseButton" Description="Pause" ImageSource="/MediaScoutGUI.Resources/pause.png" DismissWhenClicked="True" Visibility="{Binding ElementName=btnStop, Path=Visibility}" Click="_tbPauseButton_Click" />
+          <ThumbButtonInfo x:Name="_tbCancelButton" Description="Cancel" ImageSource="/MediaScoutGUI.Resources/cancel.png" Visibility="{Binding ElementName=btnStop, Path=Visibility}" Click="_tbCancelButton_Click" />
+        </ThumbButtonInfoCollection>
+      </TaskbarItemInfo.ThumbButtonInfos>
+    </TaskbarItemInfo>
+  </Window.TaskbarItemInfo>
+  <Window.Resources>
+    <BitmapImage x:Key="PauseImage" UriSource="/MediaScoutGUI.Resources/pause.png" />
+    <BitmapImage x:Key="PlayImage" UriSource="/MediaScoutGUI.Resources/play.png" />
+    <DataTemplate x:Key="dtSearchResults">
+      <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+          <TextBlock TextBlock.FontWeight="Bold" Text="{Binding Path=Title}" />
+          <TextBlock TextBlock.FontWeight="Bold" Text="(" Margin="5,0,0,0" />
+          <TextBlock TextBlock.FontWeight="Bold" Text="{Binding Path=Year}" />
+          <TextBlock TextBlock.FontWeight="Bold" Text=")" Margin="0,0,5,0" />
+        </StackPanel>
+        <TextBlock Margin="5" TextWrapping="Wrap" Text="{Binding Path=Description}" />
+      </StackPanel>
+    </DataTemplate>
+    <Style x:Key="dtComboboxStyle" TargetType="{x:Type ComboBox}">
+      <Setter Property="ItemsControl.ItemsPanel">
+        <Setter.Value>
+          <ItemsPanelTemplate>
+            <WrapPanel />
+          </ItemsPanelTemplate>
+        </Setter.Value>
+      </Setter>
+      <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+    </Style>
+  </Window.Resources>
+  <Grid Name="GridLayout">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="248*" />
+      <ColumnDefinition Width="234*" />
+      <ColumnDefinition Width="127*" />
+      <ColumnDefinition Width="84*" />
+      <ColumnDefinition Width="35*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="181*" />
+      <RowDefinition Height="40*" />
+      <RowDefinition Height="137*" />
+      <RowDefinition Height="10*" />
+      <RowDefinition Height="37*" />
+      <RowDefinition Height="10*" />
+    </Grid.RowDefinitions>
+    <DataGrid Name="dataGrid1" AutoGenerateColumns="False" CanUserResizeRows="False" SelectionMode="Single" HorizontalContentAlignment="Stretch" Grid.RowSpan="3" Grid.ColumnSpan="5" IsEnabled="False" AreRowDetailsFrozen="True" IsTextSearchEnabled="True">
+      <DataGrid.Columns>
+        <DataGridTemplateColumn Header="Movie" Width="200" CanUserSort="True" SortMemberPath="Movie.Name">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <stb:SearchTextBox GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus" Search="SearchTextBox_Search" SearchMode="Delayed" VerticalAlignment="Center" Text="{Binding Path=Movie.Name}" Tag="{Binding}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="Results" Width="150*" CanUserSort="True" SortMemberPath="SearchResults.Count">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <ComboBox x:ConnectionId="6" ItemTemplate="{StaticResource dtSearchResults}" IsSynchronizedWithCurrentItem="True" HorizontalContentAlignment="Stretch" ItemsSource="{Binding SearchResults}" Tag="{Binding}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="Title" Width="200" CanUserSort="True" SortMemberPath="SelectedMovie.Title">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <ComboBox x:ConnectionId="7" IsEditable="True" IsSynchronizedWithCurrentItem="True" HorizontalContentAlignment="Stretch" SelectedIndex="0" VerticalAlignment="Center" ItemsSource="{Binding Titles}" Tag="{Binding}" Text="{Binding Mode=TwoWay, Path=SelectedMovie.Title, UpdateSourceTrigger=PropertyChanged}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="Year" Width="50" CanUserSort="True" SortMemberPath="SelectedMovie.Year">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <TextBox x:ConnectionId="8" VerticalAlignment="Center" Text="{Binding Mode=TwoWay, Path=SelectedMovie.Year, UpdateSourceTrigger=PropertyChanged}" Tag="{Binding}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="Skip" Width="50" CanUserSort="True" SortMemberPath="Binding Skip">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding Mode=TwoWay, Path=Skip}" IsEnabled="{Binding HasSearch}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+        <DataGridTemplateColumn Header="Needs Attention" Width="100" CanUserSort="True" SortMemberPath="NeedsAttention">
+          <DataGridTemplateColumn.CellTemplate>
+            <DataTemplate>
+              <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding Path=NeedsAttention}" />
+            </DataTemplate>
+          </DataGridTemplateColumn.CellTemplate>
+        </DataGridTemplateColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+    <Button Name="btnProcess" Content="Process" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Visibility="Collapsed" IsDefault="True" Grid.Row="4" Grid.Column="3" Margin="10,0" Click="btnProcess_Click" />
+    <StackPanel Name="gdLoading" Orientation="Horizontal" Background="#B4171717" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center">
+      <TextBlock Name="txtLoading" Text="Loading" TextBlock.Foreground="#FFFFFFFF" TextBlock.FontWeight="Bold" TextBlock.FontSize="22" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0" />
+      <Button Name="btnStop" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10,0" Background="{x:Null}" Click="btnStop_Click">
+        <Button.OpacityMask>
+          <ImageBrush ImageSource="/MediaScoutGUI.Resources/cancel.png" />
+        </Button.OpacityMask>
+        <Image Source="/MediaScoutGUI.Resources/cancel.png" />
+      </Button>
+    </StackPanel>
+  </Grid>
+</Window>

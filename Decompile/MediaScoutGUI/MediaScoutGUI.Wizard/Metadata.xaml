@@ -1,0 +1,12 @@
+<Page x:Class="MediaScoutGUI.Wizard.Metadata" Title="Select Metadata Format" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid>
+    <Grid.Background>
+      <ImageBrush AlignmentX="Left" ImageSource="/MediaScoutGUI.Resources/Watermark.png" Stretch="None" TileMode="None" />
+    </Grid.Background>
+    <CheckBox Name="chkSaveXBMCMeta" Margin="115,35,237,107" BorderThickness="0" Content="XBMC" FontWeight="Bold" FontSize="16" />
+    <CheckBox Name="chkSaveMMMeta" Margin="115,64,181,75" Content="MediaBrowser" FontWeight="Bold" FontSize="16" />
+    <Button Name="btnNext" Content="Next" Height="23" HorizontalAlignment="Left" Margin="338,129,0,0" VerticalAlignment="Top" Width="75" Click="btnNext_Click" />
+    <Label Name="label1" Content="Select Metadata Format" Height="Auto" HorizontalAlignment="Left" Margin="90,4,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18" />
+    <TextBlock Name="label2" Text="If nothing is selected, only common metadata is loaded (for e.g. folder.jpg)" Margin="83,91,23,38" TextWrapping="Wrap" />
+  </Grid>
+</Page>

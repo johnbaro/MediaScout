@@ -48,7 +48,7 @@ namespace MediaScoutGUI.Controls
 			}
 		}
 
-		public new BitmapImage Source
+		/*public new BitmapImage Source
 		{
 			get
 			{
@@ -58,7 +58,7 @@ namespace MediaScoutGUI.Controls
 			{
 				base.SetValue(AnimatedImage.SourceProperty, value);
 			}
-		}
+		}*/
 
 		public Uri UriSource
 		{

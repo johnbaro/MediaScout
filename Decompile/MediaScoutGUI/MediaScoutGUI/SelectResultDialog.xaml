@@ -1,0 +1,80 @@
+<Window x:Class="MediaScoutGUI.SelectResultDialog" Name="Window" Title="Search Results" Width="478" Height="544" Icon="/MediaScoutGUI.Resources/tvscouticon.png" WindowStartupLocation="CenterOwner" Background="#FF808080" Loaded="Window_Loaded" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Window.Resources>
+    <BitmapImage x:Key="imgnoposter" UriSource="/MediaScoutGUI.Resources/noposter.png" />
+    <BitmapImage x:Key="imgnobanner" UriSource="/MediaScoutGUI.Resources/nobanner.png" />
+    <ContextMenu x:Key="cmTVShow">
+      <MenuItem Header="Open in TVDb" Click="btnOpenTVDb_Click" />
+    </ContextMenu>
+    <ContextMenu x:Key="cmMovie">
+      <MenuItem Header="Open in TMDb" Click="btnOpenTMDb_Click" />
+    </ContextMenu>
+    <DataTemplate x:Key="tvshowTemplate">
+      <Grid ContextMenu="{StaticResource cmTVShow}">
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition Height="100" />
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Stretch="Uniform" Source="{Binding Path=PosterThumb, TargetNullValue={StaticResource imgnobanner}}" />
+        <StackPanel Grid.Row="1">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock TextBlock.FontSize="14" TextBlock.FontWeight="Bold" Text="{Binding Path=Title}" />
+            <TextBlock Text="(" Margin="5,0,0,0" TextBlock.FontSize="14" TextBlock.FontWeight="Bold" />
+            <TextBlock TextBlock.FontSize="14" TextBlock.FontWeight="Bold" Text="{Binding Path=Year}" />
+            <TextBlock Text=")" TextBlock.FontSize="14" TextBlock.FontWeight="Bold" />
+          </StackPanel>
+          <TextBlock TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="{Binding Path=Description}" />
+        </StackPanel>
+      </Grid>
+    </DataTemplate>
+    <DataTemplate x:Key="movieTemplate">
+      <Grid ContextMenu="{StaticResource cmMovie}" Height="150">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="100" />
+          <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Stretch="Uniform" Source="{Binding Path=PosterThumb, TargetNullValue={StaticResource imgnobanner}}" />
+        <StackPanel Grid.Column="1">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock TextBlock.FontSize="14" TextBlock.FontWeight="Bold" Text="{Binding Path=Title}" />
+            <TextBlock Text="(" Margin="5,0,0,0" TextBlock.FontSize="14" TextBlock.FontWeight="Bold" />
+            <TextBlock TextBlock.FontSize="14" TextBlock.FontWeight="Bold" Text="{Binding Path=Year}" />
+            <TextBlock Text=")" TextBlock.FontSize="14" TextBlock.FontWeight="Bold" />
+          </StackPanel>
+          <TextBlock TextWrapping="Wrap" TextTrimming="WordEllipsis" Text="{Binding Path=Description}" />
+        </StackPanel>
+      </Grid>
+    </DataTemplate>
+  </Window.Resources>
+  <Grid Name="LayoutRoot">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10" />
+      <RowDefinition Height="31*" />
+      <RowDefinition Height="5*" />
+      <RowDefinition Height="21*" />
+      <RowDefinition Height="5*" />
+      <RowDefinition Height="184*" />
+      <RowDefinition Height="66*" />
+      <RowDefinition Height="140*" />
+      <RowDefinition Height="16*" />
+      <RowDefinition Height="21*" />
+      <RowDefinition Height="6*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10" />
+      <ColumnDefinition Width="113*" />
+      <ColumnDefinition Width="110*" />
+      <ColumnDefinition Width="99*" />
+      <ColumnDefinition Width="116*" />
+      <ColumnDefinition Width="10" />
+    </Grid.ColumnDefinitions>
+    <ListBox Name="lstMovies" Margin="8,4,8,7" ItemTemplate="{DynamicResource movieTemplate}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsTextSearchEnabled="True" Grid.ColumnSpan="6" Grid.Row="4" IsEnabled="False" Grid.RowSpan="5" Loaded="lstMovies_Loaded" SelectionChanged="lstMovies_SelectionChanged" />
+    <Label Name="lbTitle" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Item Name" FontSize="16" FontWeight="Bold" Background="#FF000000" Foreground="#FFFFFFFF" Padding="5,2" Grid.Row="1" Grid.ColumnSpan="4" Grid.Column="1" />
+    <Button Name="btnCancel" VerticalAlignment="Stretch" Content="Cancel" Margin="14,0" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" IsCancel="True" Grid.Column="4" Grid.Row="9" Click="btnCancel_Click" />
+    <Button Name="btnSelect" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="Select" Margin="14,0" Width="Auto" IsEnabled="False" IsDefault="True" Grid.Row="9" Grid.Column="1" Padding="0" Click="btnSelect_Click" />
+    <Button Name="btnSearchAgain" Margin="14,0" VerticalAlignment="Stretch" Grid.Row="9" Grid.Column="2" Click="btnSearchAgain_Click">Search Again</Button>
+    <Button Name="btnSkip" Margin="14,0" VerticalAlignment="Stretch" Visibility="Collapsed" Grid.Column="3" Grid.Row="9" Click="btnSkip_Click">Skip</Button>
+    <Label Name="label1" Content="Search Results for" FontSize="12" FontWeight="Bold" HorizontalAlignment="Stretch" Margin="8,0,0,0" VerticalAlignment="Stretch" Padding="5,2" Grid.Row="3" Grid.ColumnSpan="2" />
+    <Label Name="lbLoading" Background="#FF000000" Content="Loading ..." FontSize="35" FontWeight="Bold" Foreground="#FFFFFFFF" Grid.Row="6" HorizontalAlignment="Stretch" Padding="5" VerticalAlignment="Stretch" Grid.Column="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" />
+    <Label Name="lblSearchTerm" Content="Search Term" FontSize="12" FontWeight="Bold" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="3" HorizontalAlignment="Stretch" Padding="5,2" VerticalAlignment="Stretch" Foreground="#FFFFFFFF" Background="#5B000000" />
+  </Grid>
+</Window>

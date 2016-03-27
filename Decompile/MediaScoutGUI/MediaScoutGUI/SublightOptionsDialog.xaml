@@ -1,0 +1,17 @@
+<Window x:Class="MediaScoutGUI.SublightOptionsDialog" Title="Sublight Options" Height="235" Width="460" Icon="/MediaScoutGUI.Resources/tvscouticon.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Background="#FF808080" Loaded="Window_Loaded" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Name="GridLayout">
+    <TextBox Name="txtSublightUsername" Margin="88,126,0,0" Background="#FF696969" Foreground="#FFFFFFFF" HorizontalAlignment="Left" Width="117" Height="Auto" VerticalAlignment="Top" TextChanged="txtSublightUsername_TextChanged" />
+    <TextBox Name="txtSublightPassword" Background="#FF696969" Foreground="#FFFFFFFF" Margin="88,154,0,0" HorizontalAlignment="Left" Width="117" Height="22" VerticalAlignment="Top" />
+    <TextBox Name="txtSublightCmd" Background="#FF696969" Foreground="#FFFFFFFF" Margin="19,36,0,0" HorizontalAlignment="Left" Width="326" Height="22" VerticalAlignment="Top" />
+    <Button Name="btnBrowseSublightCmd" Content="Browse" Height="23" HorizontalAlignment="Left" Margin="351,35,0,0" VerticalAlignment="Top" Width="75" Click="btnBrowseSublightCmd_Click" />
+    <Label Name="label1" Content="SublightCmd.exe Location : " Height="Auto" HorizontalAlignment="Left" Margin="20,12,0,0" VerticalAlignment="Top" Foreground="#FFFFFFFF" Padding="0" />
+    <Label Name="label2" Content="Username : " Foreground="#FFFFFFFF" Height="Auto" HorizontalAlignment="Left" Margin="20,127,0,0" VerticalAlignment="Top" Padding="0" />
+    <Label Name="label3" Content="Password : " Foreground="#FFFFFFFF" Height="Auto" HorizontalAlignment="Left" Margin="21,157,0,0" VerticalAlignment="Top" Padding="0" />
+    <Button Name="btnOK" Content="Ok" Height="23" HorizontalAlignment="Left" Margin="259,157,0,0" VerticalAlignment="Top" Width="85" IsDefault="True" Click="btnOK_Click" />
+    <Button Name="btnCancel" Content="Cancel" Height="23" HorizontalAlignment="Left" Margin="350,157,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Click="btnCancel_Click" />
+    <Button Name="btnRegister" Content="Register" Height="23" HorizontalAlignment="Left" IsDefault="True" Margin="216,125,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnRegister_Click" />
+    <TextBox Name="txtSublight" Background="#FF696969" Foreground="#FFFFFFFF" Height="22" HorizontalAlignment="Left" Margin="18,88,0,0" VerticalAlignment="Top" Width="326" />
+    <Button Name="btnBrowseSublight" Content="Browse" Height="23" HorizontalAlignment="Left" Margin="350,87,0,0" VerticalAlignment="Top" Width="75" Click="btnBrowseSublight_Click" />
+    <Label Name="label4" Content="Sublight.exe Location : " Foreground="#FFFFFFFF" Height="Auto" HorizontalAlignment="Left" Margin="19,64,0,0" Padding="0" VerticalAlignment="Top" />
+  </Grid>
+</Window>

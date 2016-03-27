@@ -1,0 +1,38 @@
+<Window x:Class="MediaScoutGUI.NoResultsDialog" Title="Search" Height="225" Width="443" Icon="/MediaScoutGUI.Resources/tvscouticon.png" WindowStartupLocation="CenterOwner" Background="#FF808080" ResizeMode="NoResize" Loaded="Window_Loaded" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Name="gridBox">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="10" />
+      <RowDefinition Height="27" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="15" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="35" />
+      <RowDefinition Height="5" />
+      <RowDefinition Height="20" />
+      <RowDefinition Height="23" />
+      <RowDefinition Height="10" />
+      <RowDefinition Height="25" />
+      <RowDefinition Height="10" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="10*" />
+      <ColumnDefinition Width="110*" />
+      <ColumnDefinition Width="36*" />
+      <ColumnDefinition Width="110*" />
+      <ColumnDefinition Width="32*" />
+      <ColumnDefinition Width="45*" />
+      <ColumnDefinition Width="65*" />
+      <ColumnDefinition Width="13*" />
+    </Grid.ColumnDefinitions>
+    <TextBlock Name="lblmsg" Height="Auto" VerticalAlignment="Stretch" TextBlock.FontSize="16" TextBlock.FontWeight="Bold" Grid.ColumnSpan="7" Grid.Row="2" Grid.Column="1" Grid.RowSpan="2">No results were found...</TextBlock>
+    <TextBlock TextWrapping="Wrap" VerticalAlignment="Stretch" Grid.ColumnSpan="6" TextBlock.Foreground="#FFFFFFFF" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2">You can either change (its suggested you broaden or refine) the search, or cancel the search.</TextBlock>
+    <Button Name="btnCancel" Grid.Column="5" Grid.Row="10" Grid.ColumnSpan="2" Click="btnCancel_Click">Cancel</Button>
+    <Button Name="btnSearch" IsDefault="True" AllowDrop="False" Grid.Row="10" Grid.Column="1" Margin="0" Click="btnSearch_Click">Search</Button>
+    <Label Name="lblSearchTerm" FontWeight="Bold" VerticalAlignment="Stretch" Content="Enter Item Name :" Grid.ColumnSpan="2" Foreground="#FFFFFFFF" HorizontalAlignment="Stretch" Width="Auto" Grid.Row="7" Grid.Column="1" Padding="0" />
+    <Button Name="btnSkip" Margin="0" Visibility="Collapsed" Grid.Column="3" Grid.Row="10" Click="btnSkip_Click">Skip</Button>
+    <TextBox Name="txtTerm" VerticalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Row="8" Grid.Column="1" />
+    <Label Name="lbItemName" Content="Item Name" FontWeight="Bold" Foreground="#FFFFFFFF" VerticalAlignment="Stretch" Background="#FF000000" HorizontalAlignment="Stretch" Grid.ColumnSpan="6" Grid.Column="1" Grid.Row="1" />
+    <TextBox Name="txtYear" Grid.Column="6" Grid.Row="8" Margin="0,0,1,0" VerticalAlignment="Stretch" />
+    <Label Name="label1" Content="Year :" FontWeight="Bold" Foreground="#FFFFFFFF" Grid.Column="5" Grid.Row="8" HorizontalAlignment="Stretch" Margin="0,3,6,0" Padding="0" VerticalAlignment="Stretch" />
+  </Grid>
+</Window>

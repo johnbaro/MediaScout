@@ -1,5 +1,5 @@
 using MediaScoutGUI.Properties;
-using MediaScoutGUI.Wizard;
+using wiz = MediaScoutGUI.Wizard ;
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
@@ -128,7 +128,7 @@ namespace MediaScoutGUI
 					Settings.Default.TVFolders = stringCollection;
 					Settings.Default.MovieFolders = stringCollection2;
 					about.Close();
-					Wizard wizard = new Wizard();
+					wiz.Wizard wizard = new wiz.Wizard();
 					wizard.ShowDialog();
 					Settings.Default.FirstRun = false;
 				}

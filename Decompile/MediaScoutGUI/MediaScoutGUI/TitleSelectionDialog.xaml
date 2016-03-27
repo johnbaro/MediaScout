@@ -1,0 +1,15 @@
+<Window x:Class="MediaScoutGUI.TitleSelectionDialog" Title="Select Title" Height="107" Width="300" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="Window_Loaded" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Name="gridlayout">
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="204*" />
+      <ColumnDefinition Width="74*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="27*" />
+      <RowDefinition Height="18*" />
+      <RowDefinition Height="23*" />
+    </Grid.RowDefinitions>
+    <ComboBox Name="cbTitles" SelectedIndex="0" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2" Margin="0" IsEditable="True" SelectionChanged="cbTitles_SelectionChanged" />
+    <Button Name="bntOK" Content="OK" Grid.Row="2" Grid.Column="1" Margin="0" Click="bntOK_Click" />
+  </Grid>
+</Window>

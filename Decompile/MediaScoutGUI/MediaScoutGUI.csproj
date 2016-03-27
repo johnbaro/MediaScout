@@ -1,13 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{B0CD99A0-5A15-4F27-8A69-96262B432025}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
     <AssemblyName>MediaScoutGUI</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -24,6 +41,12 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework" />
     <Reference Include="System.Xaml" />
@@ -32,9 +55,10 @@
     <Reference Include="System.ServiceModel" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
-    <Reference Include="MediaScout" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Controls.Input.Toolkit" />
+    <Reference Include="System.Windows.Controls.Input.Toolkit">
+      <HintPath>..\Assemblies\System.Windows.Controls.Input.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
@@ -81,11 +105,15 @@
     <Compile Include="IWcfSublightChannel.cs" />
     <Compile Include="MediaScoutGUI.Controls\AnimatedImage.cs" />
     <Compile Include="MediaScoutGUI.Controls\DoubleToStringConverter.cs" />
-    <Compile Include="MediaScoutGUI.Controls\ImageControl.cs" />
+    <Compile Include="MediaScoutGUI.Controls\ImageControl.xaml.cs">
+      <DependentUpon>ImageControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI.Controls\RatingConverter.cs" />
     <Compile Include="MediaScoutGUI.Controls\SearchMode.cs" />
     <Compile Include="MediaScoutGUI.Controls\SearchTextBox.cs" />
-    <Compile Include="MediaScoutGUI.Controls\zoomSlider.cs" />
+    <Compile Include="MediaScoutGUI.Controls\zoomSlider.xaml.cs">
+      <DependentUpon>zoomSlider.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI.GUITypes\Episode.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\Movie.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\MovieFile.cs" />
@@ -94,29 +122,62 @@
     <Compile Include="MediaScoutGUI.GUITypes\Season.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\TVShow.cs" />
     <Compile Include="MediaScoutGUI.Properties\Settings.cs" />
-    <Compile Include="MediaScoutGUI.Wizard\Folders.cs" />
-    <Compile Include="MediaScoutGUI.Wizard\Language.cs" />
-    <Compile Include="MediaScoutGUI.Wizard\Metadata.cs" />
-    <Compile Include="MediaScoutGUI.Wizard\Wizard.cs" />
-    <Compile Include="MediaScoutGUI\About.cs" />
-    <Compile Include="MediaScoutGUI\ChangeActorImageDialog.cs" />
-    <Compile Include="MediaScoutGUI\ChangeImageDialog.cs" />
-    <Compile Include="MediaScoutGUI\ChangeTVBanner.cs" />
+    <Compile Include="MediaScoutGUI.Themes\Generic.xaml.cs">
+      <DependentUpon>Generic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI.Wizard\Folders.xaml.cs">
+      <DependentUpon>Folders.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI.Wizard\Language.xaml.cs">
+      <DependentUpon>Language.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI.Wizard\Metadata.xaml.cs">
+      <DependentUpon>Metadata.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI.Wizard\Wizard.xaml.cs">
+      <DependentUpon>Wizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\ChangeActorImageDialog.xaml.cs">
+      <DependentUpon>ChangeActorImageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\ChangeImageDialog.xaml.cs">
+      <DependentUpon>ChangeImageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\ChangeTVBanner.xaml.cs">
+      <DependentUpon>ChangeTVBanner.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI\DecisionType.cs" />
     <Compile Include="MediaScoutGUI\DispatchingCollection.cs" />
-    <Compile Include="MediaScoutGUI\FoldersDialog.cs" />
+    <Compile Include="MediaScoutGUI\FoldersDialog.xaml.cs">
+      <DependentUpon>FoldersDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI\GlassHelper.cs" />
     <Compile Include="MediaScoutGUI\ImageWindowDecisionbType.cs" />
     <Compile Include="MediaScoutGUI\LocalPosters.cs" />
-    <Compile Include="MediaScoutGUI\MainWindow.cs" />
+    <Compile Include="MediaScoutGUI\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI\MediaScoutApp.cs" />
     <Compile Include="MediaScoutGUI\MoviesSearch.cs" />
-    <Compile Include="MediaScoutGUI\NoResultsDialog.cs" />
-    <Compile Include="MediaScoutGUI\ProcessAllMoviesDialog.cs" />
-    <Compile Include="MediaScoutGUI\SelectResultDialog.cs" />
+    <Compile Include="MediaScoutGUI\NoResultsDialog.xaml.cs">
+      <DependentUpon>NoResultsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\ProcessAllMoviesDialog.xaml.cs">
+      <DependentUpon>ProcessAllMoviesDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\SelectResultDialog.xaml.cs">
+      <DependentUpon>SelectResultDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaScoutGUI\SingleInstanceManager.cs" />
-    <Compile Include="MediaScoutGUI\SublightOptionsDialog.cs" />
-    <Compile Include="MediaScoutGUI\TitleSelectionDialog.cs" />
+    <Compile Include="MediaScoutGUI\SublightOptionsDialog.xaml.cs">
+      <DependentUpon>SublightOptionsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaScoutGUI\TitleSelectionDialog.xaml.cs">
+      <DependentUpon>TitleSelectionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MediaType.cs" />
     <Compile Include="MovieHashVote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -143,45 +204,125 @@
     <Compile Include="WcfSublightClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="about.baml" />
-    <Resource Include="changeactorimagedialog.baml" />
-    <Resource Include="changeimagedialog.baml" />
-    <Resource Include="changetvbanner.baml" />
-    <Resource Include="controls\imagecontrol.baml" />
-    <Resource Include="controls\searchbox\images\clear.png" />
-    <Resource Include="controls\searchbox\images\search.png" />
-    <Resource Include="controls\zoomslider.baml" />
-    <Resource Include="foldersdialog.baml" />
-    <Resource Include="mainwindow.baml" />
-    <Resource Include="noresultsdialog.baml" />
-    <Resource Include="processallmoviesdialog.baml" />
-    <Resource Include="resources\actors_default.jpg" />
-    <Resource Include="resources\addbackdrop.png" />
-    <Resource Include="resources\addbanner.png" />
-    <Resource Include="resources\addposter.png" />
-    <Resource Include="resources\backbutton.png" />
-    <Resource Include="resources\cancel.png" />
-    <Resource Include="resources\languages.xml" />
-    <Resource Include="resources\mediabrowsericon.png" />
-    <Resource Include="resources\nobanner.png" />
-    <Resource Include="resources\noposter.png" />
-    <Resource Include="resources\pause.png" />
-    <Resource Include="resources\play.png" />
-    <Resource Include="resources\poster.png" />
-    <Resource Include="resources\refresh.png" />
-    <Resource Include="resources\tvscouticon.ico" />
-    <Resource Include="resources\tvscouticon.png" />
-    <Resource Include="resources\tvscoutsplash.png" />
-    <Resource Include="resources\watermark.png" />
-    <Resource Include="resources\xbmcicon.png" />
-    <Resource Include="selectresultdialog.baml" />
-    <Resource Include="sublightoptionsdialog.baml" />
-    <Resource Include="themes\generic.baml" />
-    <Resource Include="titleselectiondialog.baml" />
-    <Resource Include="wizard\folders.baml" />
-    <Resource Include="wizard\language.baml" />
-    <Resource Include="wizard\metadata.baml" />
-    <Resource Include="wizard\wizard.baml" />
+    <Resource Include="MediaScoutGUI.Resources\actors_default.jpg" />
+    <Resource Include="MediaScoutGUI.Resources\addbackdrop.png" />
+    <Resource Include="MediaScoutGUI.Resources\addbanner.png" />
+    <Resource Include="MediaScoutGUI.Resources\addposter.png" />
+    <Resource Include="MediaScoutGUI.Resources\backbutton.png" />
+    <Resource Include="MediaScoutGUI.Resources\cancel.png" />
+    <Resource Include="MediaScoutGUI.Resources\languages.xml" />
+    <Resource Include="MediaScoutGUI.Resources\mediabrowsericon.png" />
+    <Resource Include="MediaScoutGUI.Resources\nobanner.png" />
+    <Resource Include="MediaScoutGUI.Resources\noposter.png" />
+    <Resource Include="MediaScoutGUI.Resources\pause.png" />
+    <Resource Include="MediaScoutGUI.Resources\play.png" />
+    <Resource Include="MediaScoutGUI.Resources\poster.png" />
+    <Resource Include="MediaScoutGUI.Resources\refresh.png" />
+    <Resource Include="MediaScoutGUI.Resources\tvscouticon.ico" />
+    <Resource Include="MediaScoutGUI.Resources\tvscouticon.png" />
+    <Resource Include="MediaScoutGUI.Resources\tvscoutsplash.png" />
+    <Resource Include="MediaScoutGUI.Resources\watermark.png" />
+    <Resource Include="MediaScoutGUI.Resources\xbmcicon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaScout\MediaScout.csproj">
+      <Project>{49ef9464-203c-4204-b6f7-6dd7b54275c8}</Project>
+      <Name>MediaScout</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MediaScoutGUI.Controls\zoomSlider.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Wizard\Folders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Wizard\Language.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Wizard\Metadata.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Wizard\Wizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\ChangeActorImageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\ChangeImageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\ChangeTVBanner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\FoldersDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\NoResultsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\ProcessAllMoviesDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\SelectResultDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\SublightOptionsDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI\TitleSelectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaScoutGUI.Controls\ImageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MediaScoutGUI.Controls\SearchBox\Images\clear.png" />
+    <Content Include="MediaScoutGUI.Controls\SearchBox\Images\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

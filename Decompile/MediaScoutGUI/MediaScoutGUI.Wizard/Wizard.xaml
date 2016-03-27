@@ -1,0 +1,1 @@
+<NavigationWindow x:Class="MediaScoutGUI.Wizard.Wizard" Title="First Run" Height="219" Width="429" Icon="/MediaScoutGUI.Resources/tvscouticon.png" WindowStartupLocation="CenterScreen" Source="Folders.xaml" ResizeMode="NoResize" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"></NavigationWindow>
