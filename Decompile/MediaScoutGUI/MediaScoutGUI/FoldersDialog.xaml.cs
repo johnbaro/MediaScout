@@ -20,22 +20,6 @@ namespace MediaScoutGUI
 	{
 		private bool IsMovieFoldersDialog;
 
-		internal Grid GridLayout;
-
-		internal System.Windows.Controls.Button btnAdd;
-
-		internal System.Windows.Controls.Button btnOk;
-
-		internal System.Windows.Controls.Button btnCancel;
-
-		internal System.Windows.Controls.ListBox lstFolders;
-
-		internal System.Windows.Controls.Button btnDelete;
-
-		internal System.Windows.Controls.Button btnDeleteAll;
-
-		private bool _contentLoaded;
-
 		public FoldersDialog(bool IsMovieFoldersDialog)
 		{
 			this.InitializeComponent();
@@ -167,59 +151,6 @@ namespace MediaScoutGUI
 		{
 			this.lstFolders.Items.Clear();
 			this.btnDeleteAll.Visibility = Visibility.Collapsed;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/FoldersDialog.xaml", UriKind.Relative);
-			System.Windows.Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((FoldersDialog)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				return;
-			case 2:
-				this.GridLayout = (Grid)target;
-				return;
-			case 3:
-				this.btnAdd = (System.Windows.Controls.Button)target;
-				this.btnAdd.Click += new RoutedEventHandler(this.btnBrowseFolder_Click);
-				return;
-			case 4:
-				this.btnOk = (System.Windows.Controls.Button)target;
-				this.btnOk.Click += new RoutedEventHandler(this.btnOk_Click);
-				return;
-			case 5:
-				this.btnCancel = (System.Windows.Controls.Button)target;
-				this.btnCancel.Click += new RoutedEventHandler(this.btnCancel_Click);
-				return;
-			case 6:
-				this.lstFolders = (System.Windows.Controls.ListBox)target;
-				this.lstFolders.SelectionChanged += new SelectionChangedEventHandler(this.lstFolders_SelectionChanged);
-				return;
-			case 7:
-				this.btnDelete = (System.Windows.Controls.Button)target;
-				this.btnDelete.Click += new RoutedEventHandler(this.btnDelete_Click);
-				return;
-			case 8:
-				this.btnDeleteAll = (System.Windows.Controls.Button)target;
-				this.btnDeleteAll.Click += new RoutedEventHandler(this.btnDeleteAll_Click);
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

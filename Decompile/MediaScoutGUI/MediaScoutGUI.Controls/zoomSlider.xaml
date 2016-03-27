@@ -1,5 +1,8 @@
-<UserControl x:Class="MediaScoutGUI.Controls.zoomSlider" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dtsc="clr-namespace:MediaScoutGUI.Controls;assembly=MediaScoutGUI,Version=3.0.4.159,Culture=neutral,PublicKeyToken=1d3847494e713237">
-  <Grid>
+<UserControl x:Class="MediaScoutGUI.Controls.zoomSlider" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:dtsc="clr-namespace:MediaScoutGUI.Controls">
+    <Grid>
     <StackPanel Orientation="Horizontal">
       <StackPanel.Resources>
         <dtsc:DoubleToStringConverter x:Key="conv" />

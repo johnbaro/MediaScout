@@ -54,7 +54,9 @@
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationCore">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Controls.Input.Toolkit">
       <HintPath>..\Assemblies\System.Windows.Controls.Input.Toolkit.dll</HintPath>
@@ -122,9 +124,6 @@
     <Compile Include="MediaScoutGUI.GUITypes\Season.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\TVShow.cs" />
     <Compile Include="MediaScoutGUI.Properties\Settings.cs" />
-    <Compile Include="MediaScoutGUI.Themes\Generic.xaml.cs">
-      <DependentUpon>Generic.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MediaScoutGUI.Wizard\Folders.xaml.cs">
       <DependentUpon>Folders.xaml</DependentUpon>
     </Compile>
@@ -238,7 +237,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MediaScoutGUI.Themes\Generic.xaml">
+    <Page Include="MediaScoutGUI.Themes\generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

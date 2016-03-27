@@ -9,13 +9,8 @@ using System.Windows.Markup;
 namespace MediaScoutGUI.Controls
 {
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
-	public class zoomSlider : UserControl, INotifyPropertyChanged, IComponentConnector
+	public partial class zoomSlider : UserControl, INotifyPropertyChanged, IComponentConnector
 	{
-		internal ComboBox lblZoom;
-
-		internal Slider zoomslider;
-
-		private bool _contentLoaded;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -54,36 +49,6 @@ namespace MediaScoutGUI.Controls
 		private void zoomslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
 		{
 			this.Value = e.NewValue;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI.Controls/zoomSlider.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				this.lblZoom = (ComboBox)target;
-				return;
-			case 2:
-				this.zoomslider = (Slider)target;
-				this.zoomslider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(this.zoomslider_ValueChanged);
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

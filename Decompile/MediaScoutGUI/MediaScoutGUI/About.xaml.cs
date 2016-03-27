@@ -17,22 +17,7 @@ namespace MediaScoutGUI
 	{
 		private bool closeStoryBoardCompleted;
 
-		internal About Splash;
-
-		internal Image image1;
-
-		internal Button btnOK;
-
-		internal Label lblHomeLink;
-
-		internal Label lblLicenseLink;
-
-		internal TextBlock textBlock1;
-
-		internal TextBlock lblVersion;
-
-		private bool _contentLoaded;
-
+		
 		public About(bool IsSplash)
 		{
 			this.InitializeComponent();
@@ -71,61 +56,6 @@ namespace MediaScoutGUI
 			string fileName = e.Uri.ToString();
 			Process.Start(new ProcessStartInfo(fileName));
 			e.Handled = true;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/About.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				this.Splash = (About)target;
-				this.Splash.Closing += new CancelEventHandler(this.Splash_Closing);
-				return;
-			case 2:
-				((Storyboard)target).Completed += new EventHandler(this.WindowFadeOut_Completed);
-				return;
-			case 3:
-				this.image1 = (Image)target;
-				return;
-			case 4:
-				this.btnOK = (Button)target;
-				this.btnOK.Click += new RoutedEventHandler(this.btnOK_Click);
-				return;
-			case 5:
-				this.lblHomeLink = (Label)target;
-				return;
-			case 6:
-				((Hyperlink)target).RequestNavigate += new RequestNavigateEventHandler(this.HandleLinkClick);
-				return;
-			case 7:
-				this.lblLicenseLink = (Label)target;
-				return;
-			case 8:
-				((Hyperlink)target).RequestNavigate += new RequestNavigateEventHandler(this.HandleLinkClick);
-				return;
-			case 9:
-				this.textBlock1 = (TextBlock)target;
-				return;
-			case 10:
-				this.lblVersion = (TextBlock)target;
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

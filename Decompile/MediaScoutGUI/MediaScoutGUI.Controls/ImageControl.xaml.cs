@@ -20,12 +20,6 @@ namespace MediaScoutGUI.Controls
 
 		public Stretch stretch = Stretch.Fill;
 
-		internal Image myImage;
-
-		internal ProgressBar LoadingPB;
-
-		private bool _contentLoaded;
-
 		public bool SetLoading
 		{
 			get
@@ -88,35 +82,6 @@ namespace MediaScoutGUI.Controls
 		public ImageControl()
 		{
 			this.InitializeComponent();
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI.Controls/ImageControl.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				this.myImage = (Image)target;
-				return;
-			case 2:
-				this.LoadingPB = (ProgressBar)target;
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

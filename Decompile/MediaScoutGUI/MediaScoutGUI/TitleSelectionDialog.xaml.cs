@@ -20,14 +20,6 @@ namespace MediaScoutGUI
 
 		public string SelectedTitle;
 
-		internal Grid gridlayout;
-
-		internal ComboBox cbTitles;
-
-		internal Button bntOK;
-
-		private bool _contentLoaded;
-
 		public TitleSelectionDialog(MovieXML m)
 		{
 			this.InitializeComponent();
@@ -89,43 +81,6 @@ namespace MediaScoutGUI
 		private void bntOK_Click(object sender, RoutedEventArgs e)
 		{
 			base.DialogResult = new bool?(true);
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/TitleSelectionDialog.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((TitleSelectionDialog)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				return;
-			case 2:
-				this.gridlayout = (Grid)target;
-				return;
-			case 3:
-				this.cbTitles = (ComboBox)target;
-				this.cbTitles.SelectionChanged += new SelectionChangedEventHandler(this.cbTitles_SelectionChanged);
-				return;
-			case 4:
-				this.bntOK = (Button)target;
-				this.bntOK.Click += new RoutedEventHandler(this.bntOK_Click);
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

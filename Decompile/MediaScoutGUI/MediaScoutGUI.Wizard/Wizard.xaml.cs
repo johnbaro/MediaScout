@@ -14,8 +14,6 @@ namespace MediaScoutGUI.Wizard
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
     public partial class Wizard : NavigationWindow, IComponentConnector
 	{
-		private bool _contentLoaded;
-
 		public Wizard()
 		{
 			this.InitializeComponent();
@@ -62,24 +60,6 @@ namespace MediaScoutGUI.Wizard
 				handled = true;
 			}
 			return IntPtr.Zero;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI.Wizard/Wizard.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			this._contentLoaded = true;
 		}
 	}
 }

@@ -15,16 +15,6 @@ namespace MediaScoutGUI.Wizard
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
     public partial class Folders : Page, IComponentConnector
 	{
-		internal Button btnNext;
-
-		internal Label label1;
-
-		internal Button btnSetTVFolders;
-
-		internal Button btnSetMovieFolders;
-
-		private bool _contentLoaded;
-
 		public Folders()
 		{
 			this.InitializeComponent();
@@ -78,44 +68,6 @@ namespace MediaScoutGUI.Wizard
 		{
 			Metadata root = new Metadata();
 			base.NavigationService.Navigate(root);
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI.Wizard/Folders.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				this.btnNext = (Button)target;
-				this.btnNext.Click += new RoutedEventHandler(this.btnNext_Click);
-				return;
-			case 2:
-				this.label1 = (Label)target;
-				return;
-			case 3:
-				this.btnSetTVFolders = (Button)target;
-				this.btnSetTVFolders.Click += new RoutedEventHandler(this.btnSetTVFolders_Click);
-				return;
-			case 4:
-				this.btnSetMovieFolders = (Button)target;
-				this.btnSetMovieFolders.Click += new RoutedEventHandler(this.btnSetMovieFolders_Click);
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

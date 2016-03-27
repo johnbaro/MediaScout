@@ -19,30 +19,6 @@ namespace MediaScoutGUI
 
 		public object Selected;
 
-		internal SelectResultDialog Window;
-
-		internal Grid LayoutRoot;
-
-		internal ListBox lstMovies;
-
-		internal Label lbTitle;
-
-		internal Button btnCancel;
-
-		internal Button btnSelect;
-
-		internal Button btnSearchAgain;
-
-		internal Button btnSkip;
-
-		internal Label label1;
-
-		internal Label lbLoading;
-
-		internal Label lblSearchTerm;
-
-		private bool _contentLoaded;
-
 		public DecisionType Decision
 		{
 			get
@@ -172,75 +148,6 @@ namespace MediaScoutGUI
 			if (movieXML.ID != null)
 			{
 				Process.Start("http://www.themoviedb.org/movie/" + movieXML.ID);
-			}
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/SelectResultDialog.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				this.Window = (SelectResultDialog)target;
-				this.Window.Loaded += new RoutedEventHandler(this.Window_Loaded);
-				return;
-			case 2:
-				((MenuItem)target).Click += new RoutedEventHandler(this.btnOpenTVDb_Click);
-				return;
-			case 3:
-				((MenuItem)target).Click += new RoutedEventHandler(this.btnOpenTMDb_Click);
-				return;
-			case 4:
-				this.LayoutRoot = (Grid)target;
-				return;
-			case 5:
-				this.lstMovies = (ListBox)target;
-				this.lstMovies.Loaded += new RoutedEventHandler(this.lstMovies_Loaded);
-				this.lstMovies.SelectionChanged += new SelectionChangedEventHandler(this.lstMovies_SelectionChanged);
-				return;
-			case 6:
-				this.lbTitle = (Label)target;
-				return;
-			case 7:
-				this.btnCancel = (Button)target;
-				this.btnCancel.Click += new RoutedEventHandler(this.btnCancel_Click);
-				return;
-			case 8:
-				this.btnSelect = (Button)target;
-				this.btnSelect.Click += new RoutedEventHandler(this.btnSelect_Click);
-				return;
-			case 9:
-				this.btnSearchAgain = (Button)target;
-				this.btnSearchAgain.Click += new RoutedEventHandler(this.btnSearchAgain_Click);
-				return;
-			case 10:
-				this.btnSkip = (Button)target;
-				this.btnSkip.Click += new RoutedEventHandler(this.btnSkip_Click);
-				return;
-			case 11:
-				this.label1 = (Label)target;
-				return;
-			case 12:
-				this.lbLoading = (Label)target;
-				return;
-			case 13:
-				this.lblSearchTerm = (Label)target;
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
 			}
 		}
 	}

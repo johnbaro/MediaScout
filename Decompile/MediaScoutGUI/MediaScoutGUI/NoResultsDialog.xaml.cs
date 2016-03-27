@@ -20,27 +20,6 @@ namespace MediaScoutGUI
 
 		public string Year;
 
-		internal Grid gridBox;
-
-		internal TextBlock lblmsg;
-
-		internal Button btnCancel;
-
-		internal Button btnSearch;
-
-		internal Label lblSearchTerm;
-
-		internal Button btnSkip;
-
-		internal TextBox txtTerm;
-
-		internal Label lbItemName;
-
-		internal TextBox txtYear;
-
-		internal Label label1;
-
-		private bool _contentLoaded;
 
 		public DecisionType Decision
 		{
@@ -136,65 +115,6 @@ namespace MediaScoutGUI
 				handled = true;
 			}
 			return IntPtr.Zero;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/NoResultsDialog.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((NoResultsDialog)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				return;
-			case 2:
-				this.gridBox = (Grid)target;
-				return;
-			case 3:
-				this.lblmsg = (TextBlock)target;
-				return;
-			case 4:
-				this.btnCancel = (Button)target;
-				this.btnCancel.Click += new RoutedEventHandler(this.btnCancel_Click);
-				return;
-			case 5:
-				this.btnSearch = (Button)target;
-				this.btnSearch.Click += new RoutedEventHandler(this.btnSearch_Click);
-				return;
-			case 6:
-				this.lblSearchTerm = (Label)target;
-				return;
-			case 7:
-				this.btnSkip = (Button)target;
-				this.btnSkip.Click += new RoutedEventHandler(this.btnSkip_Click);
-				return;
-			case 8:
-				this.txtTerm = (TextBox)target;
-				return;
-			case 9:
-				this.lbItemName = (Label)target;
-				return;
-			case 10:
-				this.txtYear = (TextBox)target;
-				return;
-			case 11:
-				this.label1 = (Label)target;
-				return;
-			default:
-				this._contentLoaded = true;
-				return;
-			}
 		}
 	}
 }

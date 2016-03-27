@@ -1,4 +1,10 @@
-<rd:ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:rd="clr-namespace:System.Windows;assembly=PresentationFramework">
+<rd:ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:rd="clr-namespace:System.Windows;assembly=PresentationFramework" 
+    xmlns:l="clr-namespace:MediaScoutGUI.Controls" 
+    xmlns:wnd="System.Windows">
+    
   <SolidColorBrush x:Key="SearchTextBox_Background" Color="White" />
   <SolidColorBrush x:Key="SearchTextBox_Foreground" Color="Black" />
   <LinearGradientBrush x:Key="SearchTextBox_Border" StartPoint="0,0" EndPoint="0,1">
