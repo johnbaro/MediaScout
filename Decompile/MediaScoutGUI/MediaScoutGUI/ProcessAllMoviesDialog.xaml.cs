@@ -44,24 +44,6 @@ namespace MediaScoutGUI
 
 		private new string Language;
 
-		internal ThumbButtonInfo _tbPauseButton;
-
-		internal ThumbButtonInfo _tbCancelButton;
-
-		internal Grid GridLayout;
-
-		internal DataGrid dataGrid1;
-
-		internal Button btnProcess;
-
-		internal StackPanel gdLoading;
-
-		internal TextBlock txtLoading;
-
-		internal Button btnStop;
-
-		private bool _contentLoaded;
-
 		public ProcessAllMoviesDialog(ObservableCollection<Movie> movies, Movie UnsortedFiles, string language)
 		{
 			this.InitializeComponent();
@@ -274,59 +256,6 @@ namespace MediaScoutGUI
 			ComboBox comboBox = sender as ComboBox;
 			MoviesSearch moviesSearch = comboBox.Tag as MoviesSearch;
 			moviesSearch.SetAttentionAndSkip();
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/ProcessAllMoviesDialog.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((ProcessAllMoviesDialog)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				((ProcessAllMoviesDialog)target).Closed += new EventHandler(this.Window_Closed);
-				return;
-			case 2:
-				this._tbPauseButton = (ThumbButtonInfo)target;
-				this._tbPauseButton.Click += new EventHandler(this._tbPauseButton_Click);
-				return;
-			case 3:
-				this._tbCancelButton = (ThumbButtonInfo)target;
-				this._tbCancelButton.Click += new EventHandler(this._tbCancelButton_Click);
-				return;
-			case 4:
-				this.GridLayout = (Grid)target;
-				return;
-			case 5:
-				this.dataGrid1 = (DataGrid)target;
-				return;
-			case 9:
-				this.btnProcess = (Button)target;
-				this.btnProcess.Click += new RoutedEventHandler(this.btnProcess_Click);
-				return;
-			case 10:
-				this.gdLoading = (StackPanel)target;
-				return;
-			case 11:
-				this.txtLoading = (TextBlock)target;
-				return;
-			case 12:
-				this.btnStop = (Button)target;
-				this.btnStop.Click += new RoutedEventHandler(this.btnStop_Click);
-				return;
-			}
-			this._contentLoaded = true;
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
