@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
     xmlns:rd="clr-namespace:System.Windows;assembly=PresentationFramework" 
     xmlns:l="clr-namespace:MediaScout.GUI.Controls;assembly=MediaScout.GUI.Controls" 
-    xmlns:wnd="System.Windows">
+    >
     
   <SolidColorBrush x:Key="SearchTextBox_Background" Color="White" />
   <SolidColorBrush x:Key="SearchTextBox_Foreground" Color="Black" />
@@ -47,7 +47,6 @@
     <rd:Setter Property="Control.BorderThickness" Value="1" />
     <rd:Setter Property="UIElement.SnapsToDevicePixels" Value="True" />
     <rd:Setter Property="l:SearchTextBox.LabelText" Value="Search (CTRL+E)" />
-    <rd:Setter Property="wnd:FrameworkElement.FocusVisualStyle" Value="{x:Null}" />
     <rd:Setter Property="l:SearchTextBox.LabelTextColor" Value="{StaticResource SearchTextBox_LabelTextColor}" />
     <rd:Setter Property="Control.Template">
       <rd:Setter.Value>
@@ -105,8 +104,8 @@
       </rd:Setter.Value>
     </rd:Setter>
   </rd:Style>
-  <ControlTemplate x:Key="DefaultThemeTemplate" TargetType="{x:Type wnd:Window}">
-    <Grid Name="DocumentRoot" MinWidth="200" MinHeight="100">
+    <ControlTemplate x:Key="DefaultThemeTemplate">
+        <Grid Name="DocumentRoot" MinWidth="200" MinHeight="100">
       <Grid.Background>
         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
           <LinearGradientBrush.GradientStops>

@@ -56,24 +56,6 @@ namespace MediaScoutGUI
 
 		private bool jump = true;
 
-		internal Grid LayoutRoot;
-
-		internal ListBox lbPosters;
-
-		internal Button btnSelectPoster;
-
-		internal Button btnCancel;
-
-		internal Button btnDownloadAll;
-
-		internal Label lblNoPosters;
-
-		internal ListBox lblocalPosters;
-
-		internal Label lbNoLocals;
-
-		private bool _contentLoaded;
-
 		public ChangeActorImageDialog(string ID, string ActorsName, string ActorsID, bool IsMovieActor)
 		{
 			this.InitializeComponent();
@@ -339,69 +321,6 @@ namespace MediaScoutGUI
 					}
 				}
 			}
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/ChangeActorImageDialog.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((ChangeActorImageDialog)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				((ChangeActorImageDialog)target).Closed += new EventHandler(this.Window_Closed);
-				return;
-			case 2:
-				((MenuItem)target).Click += new RoutedEventHandler(this.btnAddPoster_Click);
-				return;
-			case 3:
-				((MenuItem)target).Click += new RoutedEventHandler(this.btnDeleteAllPoster_Click);
-				return;
-			case 4:
-				((MenuItem)target).Click += new RoutedEventHandler(this.btnDeletePoster_Click);
-				return;
-			case 6:
-				this.LayoutRoot = (Grid)target;
-				return;
-			case 7:
-				this.lbPosters = (ListBox)target;
-				this.lbPosters.SelectionChanged += new SelectionChangedEventHandler(this.lbPosters_SelectionChanged);
-				return;
-			case 8:
-				this.btnSelectPoster = (Button)target;
-				this.btnSelectPoster.Click += new RoutedEventHandler(this.btnSelectPoster_Click);
-				return;
-			case 9:
-				this.btnCancel = (Button)target;
-				this.btnCancel.Click += new RoutedEventHandler(this.btnCancel_Click);
-				return;
-			case 10:
-				this.btnDownloadAll = (Button)target;
-				this.btnDownloadAll.Click += new RoutedEventHandler(this.btnDownloadAll_Click);
-				return;
-			case 11:
-				this.lblNoPosters = (Label)target;
-				return;
-			case 12:
-				this.lblocalPosters = (ListBox)target;
-				this.lblocalPosters.SelectionChanged += new SelectionChangedEventHandler(this.lblocalPosters_SelectionChanged);
-				return;
-			case 13:
-				this.lbNoLocals = (Label)target;
-				return;
-			}
-			this._contentLoaded = true;
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]

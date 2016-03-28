@@ -22,7 +22,7 @@
         <Image Margin="10" Height="140" Width="250" Stretch="Uniform" VerticalAlignment="Top" Source="{Binding Path=Thumb}" />
         <TextBlock TextBlock.Foreground="#FFFFFFFF" Margin="10,0" HorizontalAlignment="Center" Text="{Binding Path=Resolution}" />
         <TextBlock HorizontalAlignment="Center" Margin="10" VerticalAlignment="Bottom">
-          <Hyperlink x:ConnectionId="5" NavigateUri="{Binding Path=Poster}">
+            <Hyperlink NavigateUri="{Binding Path=Poster}">
             <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=PosterFileName}" />
           </Hyperlink>
         </TextBlock>
@@ -33,7 +33,7 @@
         <Image Margin="10" Height="150" Width="105" Stretch="Uniform" VerticalAlignment="Top" Source="{Binding Path=Thumb}" />
         <TextBlock TextBlock.Foreground="#FFFFFFFF" Margin="10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Resolution}" />
         <TextBlock Margin="10" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-          <Hyperlink x:ConnectionId="6" NavigateUri="{Binding Path=Poster}">
+            <Hyperlink NavigateUri="{Binding Path=Poster}">
             <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=PosterFileName}" />
           </Hyperlink>
         </TextBlock>

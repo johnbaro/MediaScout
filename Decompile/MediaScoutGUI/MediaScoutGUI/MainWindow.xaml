@@ -177,16 +177,16 @@
             <TextBlock Text="{Binding Mode=OneWay, XPath=.}" />
         </DataTemplate>
         <DataTemplate x:Key="dtMultipleTVShows">
-            <TextBlock x:ConnectionId="69" ContextMenu="{StaticResource cmMultipleSeries}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmMultipleSeries}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtTVShows">
-            <TextBlock x:ConnectionId="70" ContextMenu="{StaticResource cmSeries}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmSeries}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtUnsortedEpisodesCollection">
-            <TextBlock x:ConnectionId="71" ContextMenu="{StaticResource cmUnsortedEpisodeCollection}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmUnsortedEpisodeCollection}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtMultipleSeasons">
-            <Grid x:ConnectionId="72" Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmMultipleSeasons}" Cursor="Hand" ToolTip="{Binding Folderpath}">
+            <Grid Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmMultipleSeasons}" Cursor="Hand" ToolTip="{Binding Folderpath}">
                 <Grid.LayoutTransform>
                     <ScaleTransform ScaleX="{Binding ElementName=zoomslider, Path=Value}" ScaleY="{Binding ElementName=zoomslider, Path=Value}" />
                 </Grid.LayoutTransform>
@@ -195,7 +195,7 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="dtSeasons">
-            <Grid x:ConnectionId="73" Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmSeasons}" Cursor="Hand" ToolTip="{Binding Folderpath}">
+            <Grid Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmSeasons}" Cursor="Hand" ToolTip="{Binding Folderpath}">
                 <Grid.LayoutTransform>
                     <ScaleTransform ScaleX="{Binding ElementName=zoomslider, Path=Value}" ScaleY="{Binding ElementName=zoomslider, Path=Value}" />
                 </Grid.LayoutTransform>
@@ -204,7 +204,7 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="dtSeasonUnsortedEpisodes">
-            <Grid x:ConnectionId="74" Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmSeasonUnsortedEpisodes}" Cursor="Hand" ToolTip="{Binding Folderpath}">
+            <Grid Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmSeasonUnsortedEpisodes}" Cursor="Hand" ToolTip="{Binding Folderpath}">
                 <Grid.LayoutTransform>
                     <ScaleTransform ScaleX="{Binding ElementName=zoomslider, Path=Value}" ScaleY="{Binding ElementName=zoomslider, Path=Value}" />
                 </Grid.LayoutTransform>
@@ -231,13 +231,13 @@
             </Grid>
         </DataTemplate>
         <DataTemplate x:Key="dtMultipleMovies">
-            <TextBlock x:ConnectionId="75" ContextMenu="{StaticResource cmMultipleMovies}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmMultipleMovies}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtMovies">
-            <TextBlock x:ConnectionId="76" ContextMenu="{StaticResource cmMovies}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmMovies}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtUnsortedFilesCollection">
-            <TextBlock x:ConnectionId="77" ContextMenu="{StaticResource cmUnsortedFilesCollection}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
+            <TextBlock ContextMenu="{StaticResource cmUnsortedFilesCollection}" Padding="5" Cursor="Hand" Text="{Binding Mode=OneWay, Path=Foldername}" />
         </DataTemplate>
         <DataTemplate x:Key="dtMultipleMovieFiles">
             <Grid Margin="10" Width="130" Height="170" ContextMenu="{StaticResource cmMultipleMovieFiles}" Cursor="Hand" ToolTip="{Binding Filepath}">

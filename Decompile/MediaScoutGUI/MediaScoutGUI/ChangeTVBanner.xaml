@@ -15,7 +15,7 @@
         <StackPanel Height="124" Width="420">
           <Image Margin="10" Height="74" Width="400" Stretch="Uniform" VerticalAlignment="Top" Source="{Binding Path=Thumb}" />
           <TextBlock HorizontalAlignment="Center" Height="20" Margin="10,0,10,10" VerticalAlignment="Bottom">
-            <Hyperlink x:ConnectionId="2" NavigateUri="{Binding Path=Poster}">
+              <Hyperlink NavigateUri="{Binding Path=Poster}">
               <TextBlock TextTrimming="CharacterEllipsis" Text="{Binding Path=Poster}" />
             </Hyperlink>
           </TextBlock>
