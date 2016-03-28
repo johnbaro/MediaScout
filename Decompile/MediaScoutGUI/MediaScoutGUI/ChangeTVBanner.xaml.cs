@@ -37,20 +37,6 @@ namespace MediaScoutGUI
 
 		public Posters selected;
 
-		internal Grid LayoutRoot;
-
-		internal ListBox lbPosters;
-
-		internal Button btnSelectBanner;
-
-		internal Button btnCancel;
-
-		internal Button btnDownloadAll;
-
-		internal Label lblNoPosters;
-
-		private bool _contentLoaded;
-
 		public ChangeTVBanner(string tvshowid, TheTVDBProvider tvdb)
 		{
 			this.InitializeComponent();
@@ -165,52 +151,6 @@ namespace MediaScoutGUI
 				handled = true;
 			}
 			return IntPtr.Zero;
-		}
-
-		[DebuggerNonUserCode]
-		public void InitializeComponent()
-		{
-			if (this._contentLoaded)
-			{
-				return;
-			}
-			this._contentLoaded = true;
-			Uri resourceLocator = new Uri("/MediaScoutGUI/ChangeTVBanner.xaml", UriKind.Relative);
-			Application.LoadComponent(this, resourceLocator);
-		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IComponentConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 1:
-				((ChangeTVBanner)target).Loaded += new RoutedEventHandler(this.Window_Loaded);
-				return;
-			case 3:
-				this.LayoutRoot = (Grid)target;
-				return;
-			case 4:
-				this.lbPosters = (ListBox)target;
-				this.lbPosters.Loaded += new RoutedEventHandler(this.lbPosters_Loaded);
-				return;
-			case 5:
-				this.btnSelectBanner = (Button)target;
-				this.btnSelectBanner.Click += new RoutedEventHandler(this.btnSelectBanner_Click);
-				return;
-			case 6:
-				this.btnCancel = (Button)target;
-				this.btnCancel.Click += new RoutedEventHandler(this.btnCancel_Click);
-				return;
-			case 7:
-				this.btnDownloadAll = (Button)target;
-				this.btnDownloadAll.Click += new RoutedEventHandler(this.btnDownloadAll_Click);
-				return;
-			case 8:
-				this.lblNoPosters = (Label)target;
-				return;
-			}
-			this._contentLoaded = true;
 		}
 
 		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
