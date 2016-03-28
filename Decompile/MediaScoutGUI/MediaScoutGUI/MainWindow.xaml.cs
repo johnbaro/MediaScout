@@ -1,4 +1,5 @@
 using MediaScout;
+using MediaScout.GUI.Controls;
 using MediaScout.Providers;
 using MediaScoutGUI.Controls;
 using MediaScoutGUI.GUITypes;

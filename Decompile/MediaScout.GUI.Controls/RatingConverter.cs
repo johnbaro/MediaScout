@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 
-namespace MediaScoutGUI.Controls
+namespace MediaScout.GUI.Controls
 {
 	public class RatingConverter : IValueConverter
 	{

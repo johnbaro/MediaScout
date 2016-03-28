@@ -1,6 +1,6 @@
 using System;
 
-namespace MediaScoutGUI.Controls
+namespace MediaScout.GUI.Controls
 {
 	public enum SearchMode
 	{

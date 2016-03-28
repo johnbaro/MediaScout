@@ -1,7 +1,7 @@
-<UserControl x:Class="MediaScoutGUI.Controls.zoomSlider" 
+<UserControl x:Class="MediaScout.GUI.Controls.zoomSlider" 
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-             xmlns:dtsc="clr-namespace:MediaScoutGUI.Controls">
+             xmlns:dtsc="clr-namespace:MediaScout.GUI.Controls">
     <Grid>
     <StackPanel Orientation="Horizontal">
       <StackPanel.Resources>

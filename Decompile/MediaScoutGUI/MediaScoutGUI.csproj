@@ -105,17 +105,7 @@
     <Compile Include="IMDB.cs" />
     <Compile Include="IWcfSublight.cs" />
     <Compile Include="IWcfSublightChannel.cs" />
-    <Compile Include="MediaScoutGUI.Controls\AnimatedImage.cs" />
-    <Compile Include="MediaScoutGUI.Controls\DoubleToStringConverter.cs" />
-    <Compile Include="MediaScoutGUI.Controls\ImageControl.xaml.cs">
-      <DependentUpon>ImageControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MediaScoutGUI.Controls\RatingConverter.cs" />
-    <Compile Include="MediaScoutGUI.Controls\SearchMode.cs" />
-    <Compile Include="MediaScoutGUI.Controls\SearchTextBox.cs" />
-    <Compile Include="MediaScoutGUI.Controls\zoomSlider.xaml.cs">
-      <DependentUpon>zoomSlider.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="AnimatedImage.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\Episode.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\Movie.cs" />
     <Compile Include="MediaScoutGUI.GUITypes\MovieFile.cs" />
@@ -227,16 +217,16 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MediaScout.GUI.Controls\MediaScout.GUI.Controls.csproj">
+      <Project>{96da95d3-2529-4d28-98a2-c552c0212838}</Project>
+      <Name>MediaScout.GUI.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MediaScout\MediaScout.csproj">
       <Project>{49ef9464-203c-4204-b6f7-6dd7b54275c8}</Project>
       <Name>MediaScout</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MediaScoutGUI.Controls\zoomSlider.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MediaScoutGUI.Themes\generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -301,12 +291,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MediaScoutGUI.Controls\ImageControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="MediaScoutGUI.Controls\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
@@ -318,10 +306,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MediaScoutGUI.Controls\SearchBox\Images\clear.png" />
-    <Content Include="MediaScoutGUI.Controls\SearchBox\Images\search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

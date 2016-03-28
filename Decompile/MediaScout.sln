@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScout", "MediaScout\MediaScout.csproj", "{49EF9464-203C-4204-B6F7-6DD7B54275C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImdbServices", "ImdbServices\ImdbServices.csproj", "{BB36652E-ADE8-489D-AC33-88C49108C313}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScoutGUI", "MediaScoutGUI\MediaScoutGUI.csproj", "{B0CD99A0-5A15-4F27-8A69-96262B432025}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaScout.GUI.Controls", "MediaScout.GUI.Controls\MediaScout.GUI.Controls.csproj", "{96DA95D3-2529-4D28-98A2-C552C0212838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B0CD99A0-5A15-4F27-8A69-96262B432025}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0CD99A0-5A15-4F27-8A69-96262B432025}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0CD99A0-5A15-4F27-8A69-96262B432025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96DA95D3-2529-4D28-98A2-C552C0212838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96DA95D3-2529-4D28-98A2-C552C0212838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96DA95D3-2529-4D28-98A2-C552C0212838}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96DA95D3-2529-4D28-98A2-C552C0212838}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

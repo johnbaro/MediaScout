@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace MediaScoutGUI.Controls
+namespace MediaScout.GUI.Controls
 {
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public partial class ImageControl : UserControl, IComponentConnector

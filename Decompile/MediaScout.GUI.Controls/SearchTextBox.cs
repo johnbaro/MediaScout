@@ -5,7 +5,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace MediaScoutGUI.Controls
+namespace MediaScout.GUI.Controls
 {
 	public class SearchTextBox : TextBox
 	{

@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 
-namespace MediaScoutGUI.Controls
+namespace MediaScout.GUI.Controls
 {
 	[GeneratedCode("PresentationBuildTasks", "4.0.0.0")]
 	public partial class zoomSlider : UserControl, INotifyPropertyChanged, IComponentConnector

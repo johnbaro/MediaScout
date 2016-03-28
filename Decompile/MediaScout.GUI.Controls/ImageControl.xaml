@@ -1,6 +1,6 @@
-<UserControl x:Class="MediaScoutGUI.Controls.ImageControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<UserControl x:Class="MediaScout.GUI.Controls.ImageControl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <UserControl.Resources>
-    <BitmapImage x:Key="imgloading" UriSource="/MediaScoutGUI.Resources/loading.png" />
+    <BitmapImage x:Key="imgloading" UriSource="/Resources/loading.png" />
   </UserControl.Resources>
   <Grid>
     <Image Name="myImage" />
