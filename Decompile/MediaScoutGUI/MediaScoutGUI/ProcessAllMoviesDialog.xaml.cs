@@ -257,24 +257,5 @@ namespace MediaScoutGUI
 			MoviesSearch moviesSearch = comboBox.Tag as MoviesSearch;
 			moviesSearch.SetAttentionAndSkip();
 		}
-
-		[EditorBrowsable(EditorBrowsableState.Never), DebuggerNonUserCode]
-		void IStyleConnector.Connect(int connectionId, object target)
-		{
-			switch (connectionId)
-			{
-			case 6:
-				((ComboBox)target).SelectionChanged += new SelectionChangedEventHandler(this.ComboBox_SelectionChanged);
-				return;
-			case 7:
-				((ComboBox)target).LostFocus += new RoutedEventHandler(this.ComboBox_LostFocus);
-				return;
-			case 8:
-				((TextBox)target).TextChanged += new TextChangedEventHandler(this.TextBox_TextChanged);
-				return;
-			default:
-				return;
-			}
-		}
 	}
 }

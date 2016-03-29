@@ -64,6 +64,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Core" />
+    <Reference Include="WPFToolkit">
+      <HintPath>..\Assemblies\WPFToolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddHashLink3Request.cs" />

@@ -12,7 +12,7 @@
     ContentRendered="Window_ContentRendered" 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-    xmlns:rc="clr-namespace:MediaScoutGUI.Controls" 
+    xmlns:rc="clr-namespace:MediaScout.GUI.Controls;assembly=MediaScout.GUI.Controls" 
     xmlns:r="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit" 
     xmlns:m="clr-namespace:System.Windows.Media;assembly=PresentationCore"
     >
@@ -654,7 +654,7 @@
                             <RowDefinition Height="206*" />
                         </Grid.RowDefinitions>
                         <ListBox Name="tvEpisodes" Background="#00FFFFFF" BorderThickness="0" Grid.ColumnSpan="10" Grid.Row="7" IsSynchronizedWithCurrentItem="True" ItemTemplate="{StaticResource dtEpisodes}" Opacity="1" Style="{StaticResource ItemsList}" VerticalContentAlignment="Top" SelectionMode="Extended" ItemsSource="{Binding Path=Episodes}" SelectionChanged="tvEpisodes_SelectionChanged" />
-                        <rc:ImageControl x:Name="imgEpisodePoster" Grid.Column="4" Grid.Row="4" Height="Auto" Margin="0" m:Stretch="m:Uniform" Grid.ColumnSpan="3" />
+                        <rc:ImageControl x:Name="imgEpisodePoster" Grid.Column="4" Grid.Row="4" Height="Auto" Margin="0" Grid.ColumnSpan="3" />
                         <TextBox Name="lbEpisodeDesc" BorderThickness="0" Grid.Column="2" Grid.ColumnSpan="8" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" Margin="0" Style="{StaticResource DescStyle}" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="Auto" Text="{Binding Mode=TwoWay, Path=Episodes/Description, UpdateSourceTrigger=PropertyChanged}" />
                         <Button Name="btnEpisodesBack" BorderThickness="0" Grid.Column="1" Grid.Row="2" IsCancel="True" Background="{x:Null}" Click="btnEpisodesBack_Click">
                             <Button.OpacityMask>
