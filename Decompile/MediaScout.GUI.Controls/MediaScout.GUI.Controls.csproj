@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -48,6 +49,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SearchBox.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="zoomSlider.xaml.cs">
       <DependentUpon>zoomSlider.xaml</DependentUpon>
     </Compile>
@@ -62,6 +67,14 @@
     <Compile Include="RatingConverter.cs" />
     <Compile Include="SearchMode.cs" />
     <Compile Include="SearchTextBox.cs" />
+    <Page Include="Themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="zoomSlider.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,6 +110,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\clear.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
